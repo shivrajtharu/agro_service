@@ -26,7 +26,7 @@ class _ReportPageState extends State<ReportPage> {
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Contacts Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text('Report Page',style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],

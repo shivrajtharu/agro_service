@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
-import 'drawer.dart';
-class BlockPage extends StatefulWidget {
-  const BlockPage({Key? key}) : super(key: key);
+import 'package:household/pages/drawer.dart';
+class LivesInPage extends StatefulWidget {
+  const LivesInPage({Key? key}) : super(key: key);
 
   @override
-  State<BlockPage> createState() => _BlockPageState();
+  State<LivesInPage> createState() => _LivesInPageState();
 }
 
-class _BlockPageState extends State<BlockPage> {
+class _LivesInPageState extends State<LivesInPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
         decoration:BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/all.jpg'),fit:BoxFit.cover)),
+                image: AssetImage('assets/images/Nawalparasi.png'),fit:BoxFit.cover)),
         child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.indigo,
                 title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
-                foregroundColor: Colors.black
+                foregroundColor: Colors.black,
             ),
             drawer: MyDrawer(),
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Block Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text('Nawalparasi',style: TextStyle(color: Colors.white,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+
 import 'drawer.dart';
-class BlockPage extends StatefulWidget {
-  const BlockPage({Key? key}) : super(key: key);
+class FieldPage extends StatefulWidget {
+  const FieldPage({Key? key}) : super(key: key);
 
   @override
-  State<BlockPage> createState() => _BlockPageState();
+  State<FieldPage> createState() => _FieldPageState();
 }
 
-class _BlockPageState extends State<BlockPage> {
+class _FieldPageState extends State<FieldPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
         decoration:BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/all.jpg'),fit:BoxFit.cover)),
+                image: AssetImage('assets/images/field.png'),fit:BoxFit.cover)),
         child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
@@ -26,7 +28,7 @@ class _BlockPageState extends State<BlockPage> {
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Block Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text('Field Page',style: TextStyle(color: Colors.white,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],
