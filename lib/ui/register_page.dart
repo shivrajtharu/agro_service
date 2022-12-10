@@ -26,8 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             Container(
               padding: EdgeInsets.only(left: 115, top: 100),
-              child: Text(
-                'REGISTER',
+              child: Text('REGISTER',
                 style: TextStyle(color: Colors.white, fontSize: 33,fontWeight: FontWeight.bold),
               ),
             ),
@@ -54,10 +53,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
-                                hintText: "Name:",
+                                hintText: "Username:",
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -78,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 hintText: "Email:",
@@ -103,7 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 hintText: "Password:",

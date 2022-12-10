@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children:<Widget> [
-             git            Container(
+                         Container(
                           child: InkWell(
                             onTap: () {},
                               borderRadius: BorderRadius.circular(30.0),
