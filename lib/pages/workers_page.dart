@@ -103,7 +103,7 @@ class _WorkersPageState extends State<WorkersPage> {
           ),
           centerTitle: true,
           foregroundColor: Colors.black,
-          backgroundColor: Colors.indigo,
+          backgroundColor: Colors.amber,
           actions:<Widget> [
             IconButton(
                 icon: Padding(

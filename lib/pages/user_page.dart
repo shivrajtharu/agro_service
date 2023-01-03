@@ -153,7 +153,6 @@ class UserPage extends StatelessWidget {
               children: [
                 InkWell(
                   onTap:  () {
-                    Navigator.of(context).pop();
                     Navigator.push(context, MaterialPageRoute(builder: (
                         context) => FieldPage()));
                   },
@@ -164,7 +163,6 @@ class UserPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap:  () {
-                    Navigator.of(context).pop();
                     Navigator.push(context, MaterialPageRoute(builder: (
                         context) => LocationPage()));
                   },
@@ -175,7 +173,6 @@ class UserPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap:  () {
-                    Navigator.of(context).pop();
                     Navigator.push(context, MaterialPageRoute(builder: (
                         context) => LivesInPage()));
                   },
@@ -186,7 +183,6 @@ class UserPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap:  () {
-                    Navigator.of(context).pop();
                     Navigator.push(context, MaterialPageRoute(builder: (
                         context) => LivesInPage()));
                   },
@@ -215,15 +211,13 @@ class UserPage extends StatelessWidget {
         );
         break;
       case 2:
-        Navigator.of(context).pushAndRemoveUntil(
+        Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => BlockPage()),
-              (route) => false,
         );
         break;
       case 3:
-        Navigator.of(context).pushAndRemoveUntil(
+        Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => CopyLinkPage()),
-              (route) => false,
         );
     }
   }

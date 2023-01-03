@@ -18,7 +18,7 @@ class _EventPageState extends State<EventPage> {
         child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-                backgroundColor: Colors.indigo,
+                backgroundColor: Colors.amber,
                 title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black

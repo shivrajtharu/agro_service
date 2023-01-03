@@ -25,7 +25,7 @@ class _BotNavBarState extends State<BotNavBar> {
       body: screens[currentIndex],
       bottomNavigationBar:BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.indigoAccent,
+        backgroundColor: Colors.amberAccent,
         selectedItemColor:Colors.black,
         unselectedItemColor: Colors.black54,
         iconSize: 28,

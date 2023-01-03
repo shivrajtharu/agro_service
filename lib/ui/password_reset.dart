@@ -15,7 +15,7 @@ class _PasswordResetState extends State<PasswordReset> {
         title: Text("Household",style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         foregroundColor: Colors.black,
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.amber,
       ),
       body: Stack(
           children: [
@@ -23,7 +23,7 @@ class _PasswordResetState extends State<PasswordReset> {
         padding: const EdgeInsets.only(top: 110,left: 80),
          child: Container(
         child: Text("Password Reset",
-          style: TextStyle(color: Colors.indigo,fontSize:30,fontWeight:FontWeight.bold),
+          style: TextStyle(color: Colors.indigoAccent,fontSize:30,fontWeight:FontWeight.bold),
         ),
      ),
       ),
@@ -45,9 +45,9 @@ class _PasswordResetState extends State<PasswordReset> {
                     Container(
                       height: 50,
                       width: 250,
-                      decoration: BoxDecoration(color:Colors.indigoAccent,borderRadius:BorderRadius.circular(15),
+                      decoration: BoxDecoration(color:Colors.black26,borderRadius:BorderRadius.circular(15),
                       ),
-                       child: TextButton(child: Text('Send Request',style: TextStyle(fontSize: 17)),onPressed: (){},),
+                       child: TextButton(child: Text('Send Request',style: TextStyle(fontSize: 15,color: Colors.black)),onPressed: (){},),
                     )
                   ],
                 ),

@@ -6,7 +6,7 @@ class NotificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.amber,
         title: Text('Notification Screen',style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         foregroundColor: Colors.black

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'drawer.dart';
 class FieldPage extends StatefulWidget {
   const FieldPage({Key? key}) : super(key: key);
@@ -9,6 +8,7 @@ class FieldPage extends StatefulWidget {
 }
 
 class _FieldPageState extends State<FieldPage> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,10 +19,15 @@ class _FieldPageState extends State<FieldPage> {
         child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-                backgroundColor: Colors.indigo,
+                backgroundColor: Colors.amber,
                 title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
-                foregroundColor: Colors.black
+                foregroundColor: Colors.black,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back,),onPressed: (){
+                // Navigator.push(context, MaterialPageRoute(builder:(context)=>UserPage(user: user),));
+              },
+              ),
             ),
             drawer: MyDrawer(),
             body: Stack(

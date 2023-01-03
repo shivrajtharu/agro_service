@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
           title: Text("Household",style: TextStyle(fontWeight: FontWeight.bold)),
           centerTitle: true,
           foregroundColor: Colors.black,
-           backgroundColor: Colors.indigo,
+           backgroundColor: Colors.amber,
         ),
         backgroundColor: Colors.transparent,
         body: Stack(

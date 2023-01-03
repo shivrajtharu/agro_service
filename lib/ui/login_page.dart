@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
           title: Text("Household",style: TextStyle(fontWeight: FontWeight.bold)),
           centerTitle: true,
           foregroundColor: Colors.black,
-          backgroundColor: Colors.indigo,
+          backgroundColor: Colors.amber,
         ),
         body: Stack(
           children: [
@@ -74,23 +74,25 @@ class _LoginPageState extends State<LoginPage> {
                       height: 40,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context,'home');
-                          },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left:32),
-                          child: Container(
+                        // TextButton(
+                        //   onPressed: () {
+                        //     Navigator.pushNamed(context,'home');
+                        //   },
+                           Container(
                             height:50,
                           width: 250,
-                          decoration: BoxDecoration(color:Colors.indigoAccent,borderRadius:BorderRadius.circular(15),
+                          decoration: BoxDecoration(color:Colors.white70,borderRadius:BorderRadius.circular(15),
                           ),
-                              child: const Center(child: Text("LOGIN"),
-                              )
+                             child: TextButton(child: Text('LOGIN',style: TextStyle(fontSize: 15,color: Colors.black)),
+                               onPressed: (){
+                                 Navigator.pushNamed(context,'home');
+                               },),
+                              // child: const Center(child: Text("LOGIN",style: TextStyle(color: Colors.black,fontSize: 15),)
+                              // )
                           ),
-                          ),
-                        ),
                       ],
                     ),
                     SizedBox(

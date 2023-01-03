@@ -17,7 +17,7 @@ class _FarmingPageState extends State<FarmingPage> {
         child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-                backgroundColor: Colors.indigo,
+                backgroundColor: Colors.amber,
                 title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black
