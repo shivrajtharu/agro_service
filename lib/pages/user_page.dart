@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:household/pages/field_page.dart';
+import 'package:household/pages/follow_page.dart';
 import 'package:household/pages/link_page.dart';
 import 'package:household/pages/lives_in_page.dart';
 import 'package:household/pages/location_page.dart';
-import 'package:household/pages/workers_page.dart';
+import 'package:household/pages/message_page.dart';
 import 'Report_page.dart';
 import 'block_page.dart';
-import 'chat.dart';
-import 'contact.dart';
-import 'friends_page.dart';
+import 'info_page.dart';
 
 class UserPage extends StatelessWidget {
-  final User user;
+  final  user;
   const UserPage({
     Key? key,required this.user,
   }) : super(key: key);
@@ -50,18 +49,19 @@ class UserPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 30 ),
                   child: ElevatedButton.icon(onPressed:(){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=>FriendsPage()));
+
+
                   },
                   icon: Icon(
-                    Icons.people,
+                    Icons.person_add_alt,
                     size: 24.0,
                   ),
-                    label: Text('Friends',style: TextStyle(color: Colors.white),),
+                    label: Text('Add friend',style: TextStyle(color: Colors.white),),
                   ),
                 ),
                 SizedBox(width: 10,),
                 OutlinedButton.icon(onPressed:(){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=>Chat()));
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>MessagePage()));
                 },
                   icon: Icon(
                     Icons.message,color: Colors.black,
@@ -85,14 +85,14 @@ class UserPage extends StatelessWidget {
                         value: 0,
                         child: Row(
                           children: [
-                            Icon(Icons.call, color: Colors.green,shadows: [BoxShadow(
-                                color: Colors.greenAccent,
+                            Icon(Icons.library_add, color: Colors.black87,shadows: [BoxShadow(
+                                color: Colors.black54,
                                 offset: Offset(5.0,5.0),
                                 blurRadius: 10.0,
                                 spreadRadius: 2.0
                             )],),
                             SizedBox(width: 15,),
-                            Text('Call'),
+                            Text('Follow'),
                           ],
                         ),
                       ),
@@ -184,7 +184,7 @@ class UserPage extends StatelessWidget {
                 InkWell(
                   onTap:  () {
                     Navigator.push(context, MaterialPageRoute(builder: (
-                        context) => LivesInPage()));
+                        context) => InfoPage()));
                   },
                   child: ListTile(
                     leading: Icon(Icons.info_rounded,),
@@ -202,7 +202,7 @@ class UserPage extends StatelessWidget {
     switch (item) {
       case 0:
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => ContactPage()),
+          MaterialPageRoute(builder: (context) => FollowPage()),
         );
         break;
       case 1:

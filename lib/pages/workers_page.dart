@@ -45,8 +45,8 @@ class _WorkersPageState extends State<WorkersPage> {
         urlAvatar:'https://cn.i.cdn.ti-platform.com/content/2145/ekans/showpage/sa/ekans-show-square.e6b074b9.png'
     ),
     const User(
-      username :'Sanim Thapa',
-      email:'thapasanim62@gmail.com\nhourly,Rs.500\n'
+      username :'Anil Singh Dhami',
+      email:'dhamianil62@gmail.com\nhourly,Rs.500\n'
           'daily,Rs.1000',
         active_status: false,
         urlAvatar:' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrU7tCyw4chOsfu_ntme8GOlc5Ll15jIybHg&usqp=CAU'
@@ -59,8 +59,8 @@ class _WorkersPageState extends State<WorkersPage> {
         urlAvatar:'https://cn.i.cdn.ti-platform.com/content/2017/ben-10/showpage/sa/b10_sq.28167bbe.png'
     ),
     const User(
-      username :'Nischal Baskota',
-      email:'baskotanischal62@gmail.com\nhourly,Rs.500\n'
+      username :'Utsav Gautam',
+      email:'gautamutsav62@gmail.com\nhourly,Rs.500\n'
           'daily,Rs.1000',
         active_status: true,
         urlAvatar:'https://cn.i.cdn.ti-platform.com/content/2145/ekans/showpage/sa/ekans-show-square.e6b074b9.png'
@@ -118,8 +118,6 @@ class _WorkersPageState extends State<WorkersPage> {
         ),
         body: Stack(
             children: [
-          Text("Workers",style: TextStyle(color: Colors.black,fontSize:25,fontWeight:FontWeight.bold),
-        ),
                ListView.builder(
                     itemCount:users.length,
                     itemBuilder:(context,index) {
@@ -189,7 +187,7 @@ class _WorkersPageState extends State<WorkersPage> {
 
     /// Fallback to actual word count if
     /// expected word count is greater
-    if (limitTo != null && limitTo > wordList.length) {
+    if (limitTo > wordList.length) {
       for (var i = 0; i < wordList.length; i++) {
         buffer.write(wordList[i][0]);
       }
@@ -210,8 +208,8 @@ class MYSearchDelegate extends SearchDelegate{
     'Sulav Dahal',
     'Dilip Chaudhary',
     'Raj Tharu',
-    'Sanim Thapa',
-    'Nischal Baskota',
+    'Anil Singh Dhami',
+    'Utsav Gautam',
     'Abisekh Giri',
     'Ritesh Yadav',
     'Ajay Tharu',

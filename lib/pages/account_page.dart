@@ -18,7 +18,7 @@ class _AccountPageState extends State<AccountPage> {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.amber,
-                title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text('Accounts',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black
             ),

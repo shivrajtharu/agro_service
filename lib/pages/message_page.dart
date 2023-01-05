@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TractorPage extends StatefulWidget {
-  const TractorPage({Key? key}) : super(key: key);
+class MessagePage extends StatefulWidget {
+  const MessagePage({Key? key}) : super(key: key);
 
   @override
-  State<TractorPage> createState() => _TractorPageState();
+  State<MessagePage> createState() => _MessagePageState();
 }
 
-class _TractorPageState extends State<TractorPage> {
+class _MessagePageState extends State<MessagePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +25,7 @@ class _TractorPageState extends State<TractorPage> {
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Tractor Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text("Message Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],
@@ -34,3 +34,4 @@ class _TractorPageState extends State<TractorPage> {
     );
   }
 }
+

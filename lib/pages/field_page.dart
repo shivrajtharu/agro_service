@@ -23,11 +23,6 @@ class _FieldPageState extends State<FieldPage> {
                 title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black,
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back,),onPressed: (){
-                // Navigator.push(context, MaterialPageRoute(builder:(context)=>UserPage(user: user),));
-              },
-              ),
             ),
             drawer: MyDrawer(),
             body: Stack(

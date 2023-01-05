@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
-class FarmingPage extends StatefulWidget {
-  const FarmingPage({Key? key}) : super(key: key);
+class EditProfile extends StatefulWidget {
+  const EditProfile({Key? key}) : super(key: key);
 
   @override
-  State<FarmingPage> createState() => _FarmingPageState();
+  State<EditProfile> createState() => _EditProfileState();
 }
 
-class _FarmingPageState extends State<FarmingPage> {
+class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +24,7 @@ class _FarmingPageState extends State<FarmingPage> {
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Farming Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text("Edit Profile\nPage",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],
@@ -34,3 +33,5 @@ class _FarmingPageState extends State<FarmingPage> {
     );
   }
 }
+
+

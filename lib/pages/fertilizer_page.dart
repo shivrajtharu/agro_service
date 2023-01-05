@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CalendarsPage extends StatefulWidget {
-  const CalendarsPage({Key? key}) : super(key: key);
+class FertilizerPage extends StatefulWidget {
+  const FertilizerPage({Key? key}) : super(key: key);
 
   @override
-  State<CalendarsPage> createState() => _CalendarsPageState();
+  State<FertilizerPage> createState() => _FertilizerPageState();
 }
 
-class _CalendarsPageState extends State<CalendarsPage> {
+class _FertilizerPageState extends State<FertilizerPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,14 +18,14 @@ class _CalendarsPageState extends State<CalendarsPage> {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.amber,
-                title: Text('Calendar',style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text('Fertilizers',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black
             ),
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Calendar Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text("Fertilizers page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],

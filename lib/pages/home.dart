@@ -4,13 +4,13 @@ import 'package:household/pages/Notification_view.dart';
 import 'package:household/pages/account_page.dart';
 import 'package:household/pages/calculator_page.dart';
 import 'package:household/pages/calendar_page.dart';
-import 'package:household/pages/customer_page.dart';
+import 'package:household/pages/fertilizer_page.dart';
 import 'package:household/pages/drawer.dart';
-import 'package:household/pages/farming_page.dart';
+import 'package:household/pages/plots_page.dart';
 import 'package:household/pages/settings_page.dart';
 import 'package:household/pages/share_page.dart';
 import 'package:household/pages/time_sheets.dart';
-import 'package:household/pages/tractor_Page.dart';
+import 'package:household/pages/machines_page.dart';
 import 'package:household/pages/workers_page.dart';
 import 'package:household/ui/login_page.dart';
 
@@ -91,11 +91,11 @@ class _HomeState extends State<Home> {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (
-                        context) => TractorPage()));
+                        context) => MachinesPage()));
                   },
                   child: Container(decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/tractor.png'),
+                          image: AssetImage('assets/images/machines.png'),
                           fit: BoxFit.cover
                       ),
                       borderRadius: BorderRadius.circular(20)
@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text('Tractor', style: TextStyle(color: Colors.black,
+                        Text('Machines', style: TextStyle(color: Colors.black,
                             fontSize: 30,
                             fontWeight: FontWeight.bold),
                         ),
@@ -144,11 +144,11 @@ class _HomeState extends State<Home> {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (
-                        context) => FarmingPage()));
+                        context) => PlotsPage()));
                   },
                   child: Container(decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/farming.png'),
+                          image: AssetImage('assets/images/plots.png'),
                           fit: BoxFit.cover
                       ),
                       borderRadius: BorderRadius.circular(20)
@@ -156,7 +156,7 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text('Farming', style: TextStyle(color: Colors.black,
+                        Text('Plots', style: TextStyle(color: Colors.black,
                             fontSize: 30,
                             fontWeight: FontWeight.bold),
                         ),
@@ -170,11 +170,11 @@ class _HomeState extends State<Home> {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (
-                        context) => CustomerPage()));
+                        context) => FertilizerPage()));
                   },
                   child: Container(decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/customer.png'),
+                          image: AssetImage('assets/images/fertilizers.png'),
                           fit: BoxFit.cover
                       ),
                       borderRadius: BorderRadius.circular(20)
@@ -182,7 +182,7 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text('Customers', style: TextStyle(color: Colors.black,
+                        Text('Fertilizers', style: TextStyle(color: Colors.black,backgroundColor:Colors.white24,
                             fontSize: 27,
                             fontWeight: FontWeight.bold),
                         ),
@@ -252,7 +252,6 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           backgroundColor: Colors.amber,
           title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
-            // centerTitle: true,
           foregroundColor: Colors.black,
            leadingWidth: 60,
           actions: <Widget>[
@@ -284,6 +283,7 @@ class _HomeState extends State<Home> {
                     child: Row(
                       children: [
                         Icon(Icons.settings, color: Colors.black,),
+                        SizedBox(width: 7.0,),
                         Text('Settings'),
                       ],
                     ),
@@ -293,6 +293,7 @@ class _HomeState extends State<Home> {
                     child: Row(
                       children: [
                         Icon(Icons.share, color: Colors.black,),
+                        SizedBox(width: 7.0,),
                         Text('Share'),
                       ],
                     ),
@@ -303,6 +304,7 @@ class _HomeState extends State<Home> {
                     child: Row(
                       children: [
                         Icon(Icons.logout, color: Colors.black,),
+                        SizedBox(width: 7.0,),
                         Text('logout'),
                       ],
                     ),

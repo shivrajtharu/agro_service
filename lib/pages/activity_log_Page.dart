@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'drawer.dart';
 
-class CalendarsPage extends StatefulWidget {
-  const CalendarsPage({Key? key}) : super(key: key);
+class ActivityLog extends StatefulWidget {
+  const ActivityLog({Key? key}) : super(key: key);
 
   @override
-  State<CalendarsPage> createState() => _CalendarsPageState();
+  State<ActivityLog> createState() => _ActivityLogState();
 }
 
-class _CalendarsPageState extends State<CalendarsPage> {
+class _ActivityLogState extends State<ActivityLog> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,14 +19,15 @@ class _CalendarsPageState extends State<CalendarsPage> {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.amber,
-                title: Text('Calendar',style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black
             ),
+            drawer: MyDrawer(),
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Calendar Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text("Activity Log Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],

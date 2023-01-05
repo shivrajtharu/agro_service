@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
-class CustomerPage extends StatefulWidget {
-  const CustomerPage({Key? key}) : super(key: key);
+class FollowPage extends StatefulWidget {
+  const FollowPage({Key? key}) : super(key: key);
 
   @override
-  State<CustomerPage> createState() => _CustomerPageState();
+  State<FollowPage> createState() => _FollowPageState();
 }
 
-class _CustomerPageState extends State<CustomerPage> {
+class _FollowPageState extends State<FollowPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +24,7 @@ class _CustomerPageState extends State<CustomerPage> {
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Customer page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
+                    child: Center(child: Text("Follow Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
                     ),)
                 ),
               ],
@@ -34,3 +33,4 @@ class _CustomerPageState extends State<CustomerPage> {
     );
   }
 }
+
