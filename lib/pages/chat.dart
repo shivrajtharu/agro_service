@@ -3,13 +3,15 @@ import 'package:household/pages/message_page.dart';
 
 class User{
   final String username;
-  final bool active_status;
+  final String message;
+  final String time;
   final String urlAvatar;
 
   const User({
     required this.username,
-    required this.active_status,
+    required this.time,
     required this.urlAvatar,
+    required this.message,
 
   });
 }
@@ -24,52 +26,62 @@ class _ChatState extends State<Chat> {
   List<User> users = [
     const User(
         username :'Shivraj Tharu',
-        active_status: true,
+        message: 'Last user message',
+        time: '12:30 PM',
         urlAvatar:'https://wallpaperaccess.com/full/749909.jpg'
     ),
     const User(
         username :'Dilip Chaudhary',
-        active_status: false,
+        message: 'Last user message',
+        time: '5:00 AM',
         urlAvatar:'https://wallpaperaccess.com/full/749909.jpg'
     ),
     const User(
         username :'Raj Tharu',
-        active_status: true,
+        message: 'Last user message',
+        time: '2:00 PM',
         urlAvatar:'https://cn.i.cdn.ti-platform.com/content/2145/ekans/showpage/sa/ekans-show-square.e6b074b9.png'
     ),
     const User(
         username :'Anil Singh Dhami',
-        active_status: false,
+        message: 'Last user message',
+        time: '11:30 AM',
         urlAvatar:' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrU7tCyw4chOsfu_ntme8GOlc5Ll15jIybHg&usqp=CAU'
     ),
     const User(
         username :'Sulav Dahal',
-        active_status: true,
+        message: 'Last user message',
+        time: '10:20 AM',
         urlAvatar:'https://cn.i.cdn.ti-platform.com/content/2017/ben-10/showpage/sa/b10_sq.28167bbe.png'
     ),
     const User(
         username :'Utsav Gautam',
-        active_status: true,
+        message: 'Last user message',
+        time: '12:30 AM',
         urlAvatar:'https://cn.i.cdn.ti-platform.com/content/2145/ekans/showpage/sa/ekans-show-square.e6b074b9.png'
     ),
     const User(
         username :'Abisekh Giri',
-        active_status: false,
+        message: 'Last user message',
+        time: '9:30 AM',
         urlAvatar:' https://cn.i.cdn.ti-platform.com/content/2017/ben-10/showpage/sa/b10_sq.28167bbe.png'
     ),
     const User(
         username :'Ritesh Yadav',
-        active_status: true,
+        message: 'Last user message',
+        time: '12:30 PM',
         urlAvatar:' https://wallpaperaccess.com/full/749909.jpg'
     ),
     const User(
         username :'Ajay Tharu',
-        active_status: true,
+        message: 'Last user message',
+        time: '2:30 PM',
         urlAvatar:' https://cn.i.cdn.ti-platform.com/content/2017/ben-10/showpage/sa/b10_sq.28167bbe.png'
     ),
     const User(
         username :'Bijay Tharu',
-        active_status: true,
+        message: 'Last user message',
+        time: '7:30 AM',
         urlAvatar:'https://cn.i.cdn.ti-platform.com/content/2145/ekans/showpage/sa/ekans-show-square.e6b074b9.png'
     ),
   ];
@@ -78,6 +90,7 @@ class _ChatState extends State<Chat> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: Text("Message",style: TextStyle(fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
@@ -99,24 +112,29 @@ class _ChatState extends State<Chat> {
           children: [
             ListView.builder(
                 itemCount:users.length,
+                padding: EdgeInsets.only(top:5),
+                physics: BouncingScrollPhysics(),
                 itemBuilder:(context,index) {
                   final user = users[index];
                   return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 17),
-                      child: ListTile(
-                          leading: CircleAvatar(
-                            radius: 22,
-                            child: Text(getUserCharacter(user.username), style: TextStyle(color: Colors.white)),
-                          ),
-
-                          title: Text(user.username),
-                          trailing: getStatusContainer(user.active_status),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MessagePage(),));
-                          }
+                    margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .04,vertical: 4),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    elevation: 0.2,
+                      color: Colors.grey.shade100,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MessagePage(),));
+                        },
+                        child: ListTile(
+                            leading: CircleAvatar(
+                              radius: 22,
+                              child: Text(getUserCharacter(user.username), style: TextStyle(color: Colors.white)),
+                            ),
+                            title: Text(user.username),
+                            subtitle: Text(user.message,maxLines: 1,),
+                            trailing: Text(user.time,style: TextStyle(color: Colors.black54),),
+                        ),
                       ),
-                    ),
                   );
                 }
             ),
@@ -125,30 +143,6 @@ class _ChatState extends State<Chat> {
       ),
     );
   }
-
-  static getStatusContainer(bool status){
-    if(!status){
-      return Container(
-
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(2.0),
-          color: Colors.red,
-        ),
-        child: Text('Inactive', style: TextStyle(color: Colors.white,),
-        ),
-      );
-    }else{
-      return Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(2.0),
-          color: Colors.green,
-        ),
-        child: Text('Active', style: TextStyle(color: Colors.white,),
-        ),
-      );
-    }
-  }
-
 
   static String getUserCharacter(String inputString, [int limitTo = 2]) {
     var buffer = StringBuffer();

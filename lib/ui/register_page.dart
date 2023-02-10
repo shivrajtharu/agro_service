@@ -13,7 +13,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Container(
       decoration:BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/all.jpg'),fit:BoxFit.cover)),
+              image: AssetImage('assets/images/register.png'),fit:BoxFit.cover)),
       child: Scaffold(
         appBar: AppBar(
           title: Text("Household",style: TextStyle(fontWeight: FontWeight.bold)),

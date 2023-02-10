@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:household/pages/friends_user_page.dart';
-import 'package:household/pages/user_page.dart';
+
 
 class User{
   final String username;
@@ -101,7 +101,7 @@ class _FriendsPageState extends State<FriendsPage> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Workers",style: TextStyle(fontWeight: FontWeight.bold)
+          title: Text("Friends",style: TextStyle(fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
           foregroundColor: Colors.black,
@@ -122,27 +122,31 @@ class _FriendsPageState extends State<FriendsPage> {
           children: [
             ListView.builder(
                 itemCount:users.length,
+                padding: EdgeInsets.only(top:5),
+                physics: BouncingScrollPhysics(),
                 itemBuilder:(context,index) {
                   final user = users[index];
                   return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: ListTile(
-                          leading: CircleAvatar(
-                            radius: 25,
-                            child: Text(getUserCharacter(user.username), style: TextStyle(color: Colors.white)),
-                          ),
-
-                          title: Text(user.username),
-                          subtitle: Text(user.email),
-                          isThreeLine: true,
-                          // dense: true,
-                          trailing: getStatusContainer(user.active_status),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FriendsUserPage(user: user)));
-                          }
+                    margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .04,vertical: 4),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    elevation: 0.2,
+                      color: Colors.grey.shade100,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FriendsUserPage(user: user)));
+                        },
+                        child: ListTile(
+                            leading: CircleAvatar(
+                              radius: 25,
+                              child: Text(getUserCharacter(user.username), style: TextStyle(color: Colors.white)),
+                            ),
+                            title: Text(user.username),
+                            subtitle: Text(user.email),
+                            isThreeLine: true,
+                            // dense: true,
+                            trailing: getStatusContainer(user.active_status),
+                        ),
                       ),
-                    ),
                   );
                 }
             ),

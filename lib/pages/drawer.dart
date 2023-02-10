@@ -36,7 +36,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       )
                     ),
                   ),
-                  Text("Er.Shivraj Tharu",style: TextStyle(fontSize: 20,color: Colors.black),),
+                  Text("Mr.Shivraj Tharu",style: TextStyle(fontSize: 20,color: Colors.black),),
                   Text("shivrajtharu62@gmail.com",style: TextStyle(color: Colors.black54),),
 
                 ],

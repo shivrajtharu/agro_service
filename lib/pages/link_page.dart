@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'drawer.dart';
 class CopyLinkPage extends StatefulWidget {
   const CopyLinkPage({Key? key}) : super(key: key);
 
@@ -11,7 +10,8 @@ class CopyLinkPage extends StatefulWidget {
 class _CopyLinkPageState extends State<CopyLinkPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(decoration:BoxDecoration(
+    return Container(
+        decoration:BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/images/all.jpg'),fit:BoxFit.cover)),
         child: Scaffold(
@@ -22,7 +22,6 @@ class _CopyLinkPageState extends State<CopyLinkPage> {
                 centerTitle: true,
                 foregroundColor: Colors.black
             ),
-            drawer: MyDrawer(),
             body: Stack(
               children: [
                 Container(

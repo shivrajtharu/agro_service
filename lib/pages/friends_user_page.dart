@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:household/pages/message_page.dart';
-
 import 'Report_page.dart';
 import 'block_page.dart';
 import 'contact.dart';
@@ -48,9 +46,8 @@ class FriendsUserPage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 30 ),
-                    child: ElevatedButton.icon(onPressed:(){
-
-
+                    child: ElevatedButton.icon(onPressed:() {
+                      _friendEditModalBottomSheet(context);
                     },
                       icon: Icon(
                         Icons.people,
@@ -61,7 +58,7 @@ class FriendsUserPage extends StatelessWidget {
                   ),
                   SizedBox(width: 10,),
                   OutlinedButton.icon(onPressed:(){
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=> MessagePage()));
+                   _messageEnterModalBottomSheet(context);
                   },
                     icon: Icon(
                       Icons.message,color: Colors.black,
@@ -197,6 +194,123 @@ class FriendsUserPage extends StatelessWidget {
           )
       ),
     );
+  }
+  void  _friendEditModalBottomSheet(context){
+    showModalBottomSheet(context: context, builder: (BuildContext){
+      return Container(
+         height: MediaQuery.of(context).size.height * .30,
+        child: Column(
+          children: [
+            InkWell(
+              onTap:  () {
+
+              },
+              child: ListTile(
+                leading: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(30)
+                  ),
+                    child: Icon(Icons.people,)),
+                title: Text("Take a Break",style: TextStyle(fontSize: 17),),
+              ),
+            ),
+            InkWell(
+              onTap:  () {
+
+              },
+              child: ListTile(
+                leading: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    child: Icon(Icons.access_time_filled)),
+                title: Text("Snooze for 30 days",style: TextStyle(fontSize: 17),),
+              ),
+            ),
+            InkWell(
+              onTap:  () {
+
+              },
+              child: ListTile(
+                leading: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    child: Icon(Icons.credit_card_off,)),
+                title: Text("Unfollow",style: TextStyle(fontSize: 17),),
+              ),
+            ),
+            InkWell(
+              onTap:  () {
+
+              },
+              child: ListTile(
+                leading: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(30)
+                    ),
+                    child: Icon(Icons.person_remove,)),
+                title: Text("Unfriend",style: TextStyle(fontSize: 17),),
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+  void _messageEnterModalBottomSheet(context){
+    showModalBottomSheet(context: context, builder: (BuildContext){
+      return Container(
+        height: 400,
+          child: Column(
+            children: [
+               Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextField(
+                  decoration:InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0)
+                    ),
+                  ) ,
+                ),
+              ),
+              Padding(
+                 padding: const EdgeInsets.only(left: 220),
+                 child:ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Stack(
+                    children: <Widget>[
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          padding: const EdgeInsets.all(16.0),
+                          textStyle: const TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () {
+
+                        },
+                        child: const Text('Send',style: TextStyle(color: Colors.white),),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+      );
+    });
   }
   onSelected(BuildContext context, int item) {
     switch (item) {
