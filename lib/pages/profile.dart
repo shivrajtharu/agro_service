@@ -7,7 +7,6 @@ import 'package:household/pages/friends_page.dart';
 import 'package:household/pages/info_page.dart';
 import 'package:household/pages/news.dart';
 import 'package:household/pages/photo_page.dart';
-
 import 'field_page.dart';
 import 'link_page.dart';
 import 'lives_in_page.dart';
@@ -34,10 +33,6 @@ class _ProfileState extends State<Profile> {
         child: Column(
           children: [
             Container(
-              width: double.infinity,
-              decoration:BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/all.jpg'),fit:BoxFit.cover,)),
                 child:Column(
                   children:<Widget>[
                     InkWell(
@@ -62,7 +57,7 @@ class _ProfileState extends State<Profile> {
                 ),
             ),
                     SizedBox(height: 10,),
-                    Text("Er.Shivraj Tharu",style: TextStyle(fontSize: 20,color: Colors.black),),
+                    Text("Mr.Shivraj Tharu",style: TextStyle(fontSize: 20,color: Colors.black),),
                     Text("shivrajtharu62@gmail.com",style: TextStyle(color: Colors.black54),),
                     SizedBox(height: 15,),
                     Row(

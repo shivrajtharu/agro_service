@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:household/pages/fertilizers_owners_page.dart';
-import 'package:household/pages/pesticides_spreader_owners_page.dart';
-import 'package:household/pages/plows_owners_page.dart';
-import 'package:household/pages/pump_sets_owners_page.dart';
-import 'package:household/pages/rotary_owners_page.dart';
-import 'package:household/pages/trailers_owners_page.dart';
-import 'Seeders_owners_page.dart';
+import 'package:household/pages/calcium_owners_page.dart';
+import 'package:household/pages/dap_owners_page.dart';
+import 'package:household/pages/magnesium_owners_page.dart';
+import 'package:household/pages/micronutrient_owners_page.dart';
+import 'package:household/pages/nitrogen_owners_page.dart';
+import 'package:household/pages/organic_owners_page.dart';
+import 'package:household/pages/phosphorus_owners_page.dart';
+import 'package:household/pages/potassium_owners_page.dart';
+import 'package:household/pages/sulphur_owners_page.dart';
+import 'package:household/pages/urea_owners_page.dart';
 import 'account_page.dart';
-import 'agricultural_tools_owners_page.dart';
-import 'balers_owners_page.dart';
-import 'combine_harvester_owner_page.dart';
-import 'fertilizer_spreader_owner_page.dart';
-import 'mini_tractors_owners_page.dart';
 
 class FertilizerTypesPage extends StatefulWidget {
   const FertilizerTypesPage({Key? key}) : super(key: key);
@@ -27,8 +25,8 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text(
-              "Types of Fertilizers", style: TextStyle(fontWeight: FontWeight.bold)
+          title: Text("Types of Fertilizers", style: TextStyle(
+              fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
           foregroundColor: Colors.black,
@@ -69,10 +67,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => FertilizersOwnersPage(),));
+                                      builder: (context) => OrganicOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Tractor'),
+                                    title: Text('Organic Fertilizer'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -96,10 +94,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>  MiniTractorsOwnersPage(),));
+                                      builder: (context) =>  UreaOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Mini Tractor'),
+                                    title: Text('Urea'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -123,10 +121,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => RotaryOwnersPage(),));
+                                      builder: (context) => DapOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Rotary'),
+                                    title: Text('DAP'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -150,10 +148,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => CombineHarvesterOwnerPage(),));
+                                      builder: (context) => PhosphorousOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Combine harvester'),
+                                    title: Text('phosphorus Fertilizer'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -177,10 +175,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => PumpSetsOwnersPage(),));
+                                      builder: (context) => PotassiumOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Pumpsets'),
+                                    title: Text('Potash Fertilizer'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -204,10 +202,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => FertilizerSpreaderOwnerPage(),));
+                                      builder: (context) => MicronutrientOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Fertilizer Spreader'),
+                                    title: Text('Micronutrient'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -231,10 +229,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => PesticidesSpreaderOwnersPage(),));
+                                      builder: (context) => CalciumOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Pesticides Spreader'),
+                                    title: Text('Calcium Fertilizer'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -258,10 +256,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => PlowsOwnersPage(),));
+                                      builder: (context) => SulphurOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Plows'),
+                                    title: Text('Sulphur Fertilizer'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -285,10 +283,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => SeedersOwnersPage(),));
+                                      builder: (context) => MagnesiumOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Seeders'),
+                                    title: Text('Magnesium Fertilizer'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,
@@ -312,64 +310,10 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => BalersOwnersPage(),));
+                                      builder: (context) => NitrogenOwnersPage(),));
                                   },
                                   child: ListTile(
-                                    title: Text('Balers'),
-                                    trailing: Container(
-                                        height: 40,
-                                        width: 40,
-                                        decoration:BoxDecoration(
-                                            color: Colors.grey.shade300,
-                                            borderRadius: BorderRadius.circular(30)
-                                        ),
-                                        child: Icon(Icons.arrow_forward_ios_rounded)),
-                                  ),
-                                ),
-                              ),
-                              Card(
-                                margin: EdgeInsets.symmetric(horizontal: MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width * .04, vertical: 4),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                elevation: 0.2,
-                                color: Colors.grey.shade100,
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => TrailersOwnersPage(),));
-                                  },
-                                  child: ListTile(
-                                    title: Text('Wagons or Trailers'),
-                                    trailing: Container(
-                                        height: 40,
-                                        width: 40,
-                                        decoration:BoxDecoration(
-                                            color: Colors.grey.shade300,
-                                            borderRadius: BorderRadius.circular(30)
-                                        ),
-                                        child: Icon(Icons.arrow_forward_ios_rounded)),
-                                  ),
-                                ),
-                              ),
-                              Card(
-                                margin: EdgeInsets.symmetric(horizontal: MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width * .04, vertical: 4),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                elevation: 0.2,
-                                color: Colors.grey.shade100,
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => AgriculturalToolsOwnersPage(),));
-                                  },
-                                  child: ListTile(
-                                    title: Text('Agricultural tools'),
+                                    title: Text('Nitrogen Fertilizer'),
                                     trailing: Container(
                                         height: 40,
                                         width: 40,

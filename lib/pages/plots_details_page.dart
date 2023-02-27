@@ -6,7 +6,7 @@ class PlotsDetailsPage extends StatelessWidget {
   Widget _categories({required String name}){
     return Container(
       height: 60,
-      width: 120,
+      width: 250,
       decoration: BoxDecoration(
           color: Color(0xfffafbfd),
           borderRadius: BorderRadius.circular(10)
@@ -40,7 +40,7 @@ class PlotsDetailsPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('\$ $price HR'),
+                Text('\$ $price Monthly'),
                 SizedBox(height: 10,),
                 Text(name,style: TextStyle(
                   fontSize: 20,
@@ -162,7 +162,7 @@ class PlotsDetailsPage extends StatelessWidget {
                             width: 171,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage('assets/images/minitractor.png',),fit: BoxFit.cover
+                                    image: AssetImage('assets/images/plot_title.png',),fit: BoxFit.cover
                                 ),
                                 borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(10),
@@ -189,15 +189,7 @@ class PlotsDetailsPage extends StatelessWidget {
                         child: Row(
                           children: [
                             _categories(
-                                name: 'Harvest'),
-                            _categories(
-                                name: 'Tilling'),
-                            _categories(
-                                name: 'Planting'),
-                            _categories(
-                                name: 'Plowing'),
-                            _categories(
-                                name: 'trailering'),
+                                name: 'For Rent And Sale'),
                           ],
                         ),
                       ),
@@ -210,47 +202,47 @@ class PlotsDetailsPage extends StatelessWidget {
                           children: [
                             _bottomContainer(
                                 color: Color(0xffffeedf),
-                                price: 100,
-                                name: 'Harvesting',
+                                price: 2000,
+                                name: 'Kathmandu',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_harvesting.png'
+                                images: 'assets/images/plot1.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(204, 204, 204, 255),
-                                price: 150,
-                                name: 'Tilling',
+                                price: 1500,
+                                name: 'Butwal',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_tilling.png'
+                                images: 'assets/images/plot2.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(204, 204, 255, 255),
-                                price: 200,
-                                name: 'Planting',
+                                price: 1000,
+                                name: 'Bhairahawa',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_planting.png'
+                                images: 'assets/images/plot3.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(55, 204, 204, 55),
-                                price: 200,
-                                name: 'Plowing',
+                                price: 700,
+                                name: 'Bhaktpur',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_plowing.png'
+                                images: 'assets/images/plot4.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(255, 255, 204, 204),
-                                price: 200,
-                                name: 'Trailering',
+                                price: 500,
+                                name: 'Nawalparasi',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_trailering.png'
+                                images: 'assets/images/plot5.png'
                             ),
                           ],
                         ),

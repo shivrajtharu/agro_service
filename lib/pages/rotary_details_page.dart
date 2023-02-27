@@ -5,7 +5,7 @@ class RotaryDetailsPage extends StatelessWidget {
   Widget _categories({required String name}){
     return Container(
       height: 60,
-      width: 120,
+      width: 200,
       decoration: BoxDecoration(
           color: Color(0xfffafbfd),
           borderRadius: BorderRadius.circular(10)
@@ -189,6 +189,7 @@ class RotaryDetailsPage extends StatelessWidget {
                           children: [
                             _categories(
                                 name: 'Mixing'),
+                            SizedBox(width: 10,),
                             _categories(
                                 name: 'Leveling'),
                           ],

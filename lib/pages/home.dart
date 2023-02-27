@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
     return Container(
       decoration:BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/home1.png'),fit:BoxFit.cover)),
+              image: AssetImage('assets/images/home.png'),fit:BoxFit.cover)),
       child: Scaffold(
         backgroundColor: CustomColors.backgroundcolor,
            body:
@@ -239,7 +239,7 @@ class _HomeState extends State<Home> {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (
-                                  context) => CalendarsPage()));
+                                  context) => CalendarPage()));
                             },
                             child: Column(
                               children: [

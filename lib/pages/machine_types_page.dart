@@ -4,7 +4,6 @@ import 'package:household/pages/agricultural_tools_owners_page.dart';
 import 'package:household/pages/balers_owners_page.dart';
 import 'package:household/pages/fertilizer_spreader_owner_page.dart';
 import 'package:household/pages/mini_tractors_owners_page.dart';
-import 'package:household/pages/pesticides_spreader_owners_page.dart';
 import 'package:household/pages/plows_owners_page.dart';
 import 'package:household/pages/pump_sets_owners_page.dart';
 import 'package:household/pages/rotary_owners_page.dart';
@@ -207,34 +206,7 @@ class _MachineTypesPageState extends State<MachineTypesPage> {
                                 builder: (context) => FertilizerSpreaderOwnerPage(),));
                             },
                             child: ListTile(
-                              title: Text('Fertilizer Spreader'),
-                              trailing: Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration:BoxDecoration(
-                                      color: Colors.grey.shade300,
-                                      borderRadius: BorderRadius.circular(30)
-                                  ),
-                                  child: Icon(Icons.arrow_forward_ios_rounded)),
-                            ),
-                          ),
-                        ),
-                        Card(
-                          margin: EdgeInsets.symmetric(horizontal: MediaQuery
-                              .of(context)
-                              .size
-                              .width * .04, vertical: 4),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          elevation: 0.2,
-                          color: Colors.grey.shade100,
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => PesticidesSpreaderOwnersPage(),));
-                            },
-                            child: ListTile(
-                              title: Text('Pesticides Spreader'),
+                              title: Text('Spreader'),
                               trailing: Container(
                                   height: 40,
                                   width: 40,

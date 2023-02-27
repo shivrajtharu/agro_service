@@ -57,7 +57,8 @@ class FriendsUserPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 10,),
-                  OutlinedButton.icon(onPressed:(){
+                  OutlinedButton.icon(
+                    onPressed:(){
                    _messageEnterModalBottomSheet(context);
                   },
                     icon: Icon(
@@ -279,6 +280,7 @@ class FriendsUserPage extends StatelessWidget {
                Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: TextField(
+                  autofocus: true,
                   decoration:InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0)

@@ -6,7 +6,7 @@ class AgriculturalToolsDetailsPage extends StatelessWidget {
   Widget _categories({required String name}){
     return Container(
       height: 60,
-      width: 120,
+      width: 130,
       decoration: BoxDecoration(
           color: Color(0xfffafbfd),
           borderRadius: BorderRadius.circular(10)
@@ -27,7 +27,7 @@ class AgriculturalToolsDetailsPage extends StatelessWidget {
   Widget _bottomContainer({required Color color,required double price,
     required String name,required String title,required String subtitle,required String images}){
     return Container(
-      height: 160,
+      height: 230,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
@@ -162,7 +162,7 @@ class AgriculturalToolsDetailsPage extends StatelessWidget {
                             width: 171,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage('assets/images/minitractor.png',),fit: BoxFit.cover
+                                    image: AssetImage('assets/images/tools.png',),fit: BoxFit.cover
                                 ),
                                 borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(10),
@@ -189,15 +189,19 @@ class AgriculturalToolsDetailsPage extends StatelessWidget {
                         child: Row(
                           children: [
                             _categories(
-                                name: 'Harvest'),
+                                name: 'Cutlass'),
+                            SizedBox(width:10),
                             _categories(
-                                name: 'Tilling'),
+                                name: 'Shovel'),
+                            SizedBox(width:10),
                             _categories(
-                                name: 'Planting'),
+                                name: 'Hoe'),
+                            SizedBox(width:10),
                             _categories(
-                                name: 'Plowing'),
+                                name: 'Bolo'),
+                            SizedBox(width:10),
                             _categories(
-                                name: 'trailering'),
+                                name: 'Sickle'),
                           ],
                         ),
                       ),
@@ -211,46 +215,46 @@ class AgriculturalToolsDetailsPage extends StatelessWidget {
                             _bottomContainer(
                                 color: Color(0xffffeedf),
                                 price: 100,
-                                name: 'Harvesting',
+                                name: 'Cutting bushes by Cutlass',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_harvesting.png'
+                                images: 'assets/images/cutlass.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(204, 204, 204, 255),
                                 price: 150,
-                                name: 'Tilling',
+                                name: 'Digging garden by Shovel',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_tilling.png'
+                                images: 'assets/images/shovel.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(204, 204, 255, 255),
                                 price: 200,
-                                name: 'Planting',
+                                name: 'Dig field by Hoe ',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_planting.png'
+                                images: 'assets/images/hoe.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(55, 204, 204, 55),
                                 price: 200,
-                                name: 'Plowing',
+                                name: 'Removing grass by Bolo',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_plowing.png'
+                                images: 'assets/images/bolo.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(255, 255, 204, 204),
                                 price: 200,
-                                name: 'Trailering',
+                                name: 'Cutting crops by Sickle',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/minitractor_trailering.png'
+                                images: 'assets/images/sickle.png'
                             ),
                           ],
                         ),

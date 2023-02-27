@@ -310,6 +310,7 @@ class _MessagePageState extends State<MessagePage> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10,right: 10),
                               child: TextField(
+                                autofocus: true,
                                 decoration: InputDecoration(
                                     hintText: "Type message...",
                                     hintStyle: TextStyle(color: Colors.grey.shade500),

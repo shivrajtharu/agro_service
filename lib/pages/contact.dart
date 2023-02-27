@@ -1,5 +1,7 @@
+import 'package:fast_contacts/fast_contacts.dart';
 import 'package:flutter/material.dart';
 import 'package:household/pages/drawer.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
@@ -11,12 +13,7 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration:BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/all.jpg'),fit:BoxFit.cover)),
-        child: Scaffold(
-            backgroundColor: Colors.transparent,
+    return Scaffold(
             appBar: AppBar(
                 backgroundColor: Colors.amber,
                 title: Text('Contacts',style: TextStyle(fontWeight: FontWeight.bold)),
@@ -27,12 +24,55 @@ class _ContactPageState extends State<ContactPage> {
             body: Stack(
               children: [
                 Container(
-                    child: Center(child: Text("Contacts Page",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
-                    ),)
+                  height: double.infinity,
+                    child: FutureBuilder(
+                      future: getContacts(),
+                      builder: (context,AsyncSnapshot snapshot){
+                        if(snapshot.data == null) {
+                          return const Center(
+                            child: SizedBox(
+                                height: 50,
+                                child: CircularProgressIndicator()),
+                          );
+                        }
+                        return ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context,index) {
+                              Contact contact = snapshot.data[index];
+                              return Column(
+                                children:[
+                                  ListTile(
+                                    leading: const CircleAvatar(
+                                      radius: 25,
+                                      child: Icon(Icons.person),
+                                    ),
+                                    title: Text(contact.displayName),
+                                    subtitle: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(contact.phones[0]),
+                                      ],
+                                    ),
+                                  ),
+                                  const Divider(),
+                                ],
+                              );
+                            });
+                      }
+                    ),
                 ),
               ],
             )
-        )
-    );
+        );
+  }
+  Future<List<Contact>> getContacts() async{
+    bool isGranted = await Permission.contacts.status.isGranted;
+    if(!isGranted){
+      isGranted = await Permission.contacts.request().isGranted;
+    }
+    if(isGranted) {
+      return await FastContacts.allContacts;
+    }
+    return [];
   }
 }
