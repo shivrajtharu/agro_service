@@ -47,7 +47,8 @@ class _HomeState extends State<Home> {
                      'https://images.unsplash.com/photo-1614977645968-6db1d7798ac7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTh8fG1hY2hpbmVzJTIwb24lMjBmYXJtaW5nJTIwZmllbGR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                      'https://images.unsplash.com/photo-1659021181759-2f987070b6c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fG1hY2hpbmVzJTIwb24lMjBmYXJtaW5nJTIwZmllbGR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                      'https://images.unsplash.com/photo-1532929900024-6413d2ed39c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTgzfHxmYXJtZXJzJTIwb24lMjBmYXJtaW5nJTIwZmllbGR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-                   ],),
+                   ],
+                 ),
                ),
                Padding(
                 padding: const EdgeInsets.only(top:10),
