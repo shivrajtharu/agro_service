@@ -46,17 +46,15 @@ class CoverPage extends StatelessWidget {
                                             margin: EdgeInsets.only(top:10),
                                               child: Row(
                                                   children: [
-                                                    RaisedButton(
+                                                    ElevatedButton(
                                                       child: Text('Sign-In'),
-                                                      color: Colors.blueAccent,
                                                       onPressed: (){
                                                         Navigator.of(context).push(MaterialPageRoute(
                                                           builder: (context) => LoginPage(),));
                                                       },
                                                     ),
                                                     SizedBox(width: 20,),
-                                                    RaisedButton(
-                                                      color: Colors.blueAccent,
+                                                    ElevatedButton(
                                                       child: Text('Sign-Up'),
                                                       onPressed: (){
                                                         Navigator.of(context).push(MaterialPageRoute(

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:household/pages/calcium_owners_page.dart';
-import 'package:household/pages/dap_owners_page.dart';
-import 'package:household/pages/magnesium_owners_page.dart';
-import 'package:household/pages/micronutrient_owners_page.dart';
-import 'package:household/pages/nitrogen_owners_page.dart';
-import 'package:household/pages/organic_owners_page.dart';
-import 'package:household/pages/phosphorus_owners_page.dart';
-import 'package:household/pages/potassium_owners_page.dart';
-import 'package:household/pages/sulphur_owners_page.dart';
-import 'package:household/pages/urea_owners_page.dart';
-import 'account_page.dart';
-
+import 'package:household/owners/magnesium_owners_page.dart';
+import 'package:household/owners/organic_owners_page.dart';
+import 'package:household/owners/phosphorus_owners_page.dart';
+import 'package:household/owners/sulphur_owners_page.dart';
+import 'package:household/owners/urea_owners_page.dart';
+import '../owners/calcium_owners_page.dart';
+import '../owners/dap_owners_page.dart';
+import '../owners/micronutrient_owners_page.dart';
+import '../owners/nitrogen_owners_page.dart';
+import '../owners/potassium_owners_page.dart';
 class FertilizerTypesPage extends StatefulWidget {
   const FertilizerTypesPage({Key? key}) : super(key: key);
 
@@ -43,11 +41,7 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
             )
           ],
         ),
-        body: Column(
-          children: [
-            Container(
-              height: 655,
-              child: SingleChildScrollView(
+        body: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 10),
@@ -331,62 +325,6 @@ class _FertilizerTypesPageState extends State<FertilizerTypesPage> {
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.only(left: 55),
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AccountPage(),));
-                        },
-                        child: Icon(Icons.account_balance_wallet,size: 30,)),
-                  ),
-                  SizedBox(width: 70,),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.pinkAccent,
-                        borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: InkWell(
-                        onTap: (){
-
-                        },
-                        child: Icon(Icons.notes_rounded,size: 30,)),
-                  ),
-                  SizedBox(width: 70,),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: InkWell(
-                        onTap: (){
-
-                        },
-                        child: Icon(Icons.add,size: 30,)),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
 

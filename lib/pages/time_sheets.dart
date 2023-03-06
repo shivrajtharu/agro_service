@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import '../data/users.dart';
-import '../models/user.dart';
-import '../utils.dart';
-import '../widget/scrollable_widget.dart';
-import '../widget/text_dialog_widget.dart';
 
-Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+class Timesheet {
+  final String date;
+  final String startTime;
+  final String endTime;
+  final String description;
+
+  Timesheet(
+      {required this.date,
+        required this.startTime,
+        required this.endTime,
+        required this.description});
 }
 
 class TimeSheetsPage extends StatefulWidget {
@@ -20,113 +19,119 @@ class TimeSheetsPage extends StatefulWidget {
 }
 
 class _TimeSheetsPageState extends State<TimeSheetsPage> {
-  late List<User> users;
+  List<Timesheet> _timesheets = [];
+
+  final _formKey = GlobalKey<FormState>();
+  final _dateController = TextEditingController();
+  final _startTimeController = TextEditingController();
+  final _endTimeController = TextEditingController();
+  final _descriptionController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-
-    this.users = List.of(allUsers);
-  }
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    body: ScrollableWidget(child: buildDataTable()),
-    appBar: AppBar(
-      title: Text('Time Sheet'),
-      centerTitle: true,
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.purple, Colors.blue],
-            begin: Alignment.bottomRight,
-            end: Alignment.topLeft,
-          ),
-        ),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('TimeSheets'),
+        backgroundColor: Colors.amber,
+        foregroundColor: Colors.black,
       ),
-    ),
-  );
-
-  Widget buildDataTable() {
-    final columns = ['Name', 'Address', 'Start', 'End'];
-
-    return DataTable(
-      columns: getColumns(columns),
-      rows: getRows(users),
+      body: ListView.builder(
+        itemCount: _timesheets.length,
+        itemBuilder: (context, index) {
+          final timesheet = _timesheets[index];
+          return ListTile(
+            title: Text(timesheet.date),
+            subtitle: Text('${timesheet.startTime} - ${timesheet.endTime}'),
+            trailing: Text(timesheet.description),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Add Timesheet'),
+                content: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      TextFormField(
+                        controller: _dateController,
+                        decoration: InputDecoration(labelText: 'Date'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a date';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: _startTimeController,
+                        decoration: InputDecoration(labelText: 'Start Time'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a start time';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: _endTimeController,
+                        decoration: InputDecoration(labelText: 'End Time'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter an end time';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        controller: _descriptionController,
+                        decoration: InputDecoration(labelText: 'Description'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a description';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    child: Text('Cancel'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  ElevatedButton(
+                    child: Text('Add'),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        final timesheet = Timesheet(
+                          date: _dateController.text,
+                          startTime: _startTimeController.text,
+                          endTime: _endTimeController.text,
+                          description: _descriptionController.text,
+                        );
+                        setState(() {
+                          _timesheets.add(timesheet);
+                        });
+                        Navigator.of(context).pop();
+                      }
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        child: Icon(Icons.add),
+      ),
     );
-  }
-
-  List<DataColumn> getColumns(List<String> columns) {
-    return columns.map((String column) {
-      final isDate = column == columns[2];
-
-      return DataColumn(
-        label: Text(column),
-        numeric: isDate,
-      );
-    }).toList();
-  }
-  List<DataColumn> Columns(List<String> columns) {
-    return columns.map((String column) {
-      final isDate = column == columns[3];
-
-      return DataColumn(
-        label: Text(column),
-        numeric: isDate,
-      );
-    }).toList();
-  }
-
-  List<DataRow> getRows(List<User> users) => users.map((User user) {
-    final cells = [user.Name, user.Address, user.start, user.end];
-
-    return DataRow(
-      cells: Utils.modelBuilder(cells, (index, cell) {
-        final showEditIcon = index == 0 || index == 1;
-
-        return DataCell(
-          Text('$cell'),
-          showEditIcon: showEditIcon,
-          onTap: () {
-            switch (index) {
-              case 0:
-                Name(user);
-                break;
-              case 1:
-                Address(user);
-                break;
-            }
-          },
-        );
-      }),
-    );
-  }).toList();
-
-  Future Name(User editUser) async {
-    final Name = await showTextDialog(
-      context,
-      title: 'Change Name',
-      value: editUser.Name,
-    );
-
-    setState(() => users = users.map((user) {
-      final isEditedUser = user == editUser;
-
-      return isEditedUser ? user.copy(Name: Name) : user;
-    }).toList());
-  }
-
-  Future Address(User editUser) async {
-    final Address = await showTextDialog(
-      context,
-      title: 'Change Address',
-      value: editUser.Address,
-    );
-
-    setState(() => users = users.map((user) {
-      final isEditedUser = user == editUser;
-
-      return isEditedUser ? user.copy(Address: Address) : user;
-    }).toList());
   }
 }

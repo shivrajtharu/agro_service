@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'drawer.dart';
+import '../widget/drawer.dart';
 class BlockPage extends StatefulWidget {
   const BlockPage({Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class _BlockPageState extends State<BlockPage> {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.amber,
-                title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text('Agro Service',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black
             ),

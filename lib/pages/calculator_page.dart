@@ -96,7 +96,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Simple Calculator'),
+        title: Text('Calculator'),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -110,8 +110,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
       ),
       body: Column(
         children: <Widget>[
-
-
           Container(
             alignment: Alignment.centerRight,
             padding: EdgeInsets.fromLTRB(10, 20, 10, 0),

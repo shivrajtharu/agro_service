@@ -12,7 +12,7 @@ class _PasswordResetState extends State<PasswordReset> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Household",style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("Agro Service",style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         foregroundColor: Colors.black,
         backgroundColor: Colors.amber,

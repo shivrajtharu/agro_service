@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:household/pages/drawer.dart';
+import 'package:household/widget/drawer.dart';
 class LivesInPage extends StatefulWidget {
   const LivesInPage({Key? key}) : super(key: key);
 
@@ -19,7 +19,7 @@ class _LivesInPageState extends State<LivesInPage> {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.amber,
-                title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text('Agro Service',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black,
             ),

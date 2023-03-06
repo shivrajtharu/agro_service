@@ -9,6 +9,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           elevation: 0,
-          title: Text("Household",style: TextStyle(fontWeight: FontWeight.bold)),
+          title: Text("Agro Service",style: TextStyle(fontWeight: FontWeight.bold)),
           centerTitle: true,
           foregroundColor: Colors.black,
           backgroundColor: Colors.amber,
@@ -41,6 +42,9 @@ class _LoginPageState extends State<LoginPage> {
                             fillColor: Colors.grey.shade100,
                             filled: true,
                             labelText: 'email',
+                            hintText: "Enter your email",
+                            labelStyle: TextStyle(color: Colors.grey.shade700),
+                            prefixIcon: Icon(Icons.email_outlined),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15)
                             )
@@ -57,6 +61,9 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                                filled: true,
                           labelText: 'Password',
+                          hintText:'Enter your password',
+                          labelStyle: TextStyle(color: Colors.grey.shade700),
+                          prefixIcon: Icon(Icons.lock_outline),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _isObscure ? Icons.visibility_off : Icons.visibility,
@@ -76,10 +83,6 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          // TextButton(
-                          //   onPressed: () {
-                          //     Navigator.pushNamed(context,'home');
-                          //   },
                              Container(
                               height:50,
                             width: 250,
@@ -87,10 +90,8 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                                child: TextButton(child: Text('LOGIN',style: TextStyle(fontSize: 15,color: Colors.black)),
                                  onPressed: (){
-                                   Navigator.pushNamed(context,'home');
+                                    Navigator.pushNamed(context,'loginType');
                                  },),
-                                // child: const Center(child: Text("LOGIN",style: TextStyle(color: Colors.black,fontSize: 15),)
-                                // )
                             ),
                         ],
                       ),

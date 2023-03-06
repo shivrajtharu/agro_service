@@ -8,6 +8,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
               image: AssetImage('assets/images/register.png'),fit:BoxFit.cover)),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Household",style: TextStyle(fontWeight: FontWeight.bold)),
+          title: Text("Agro Service",style: TextStyle(fontWeight: FontWeight.bold)),
           centerTitle: true,
           foregroundColor: Colors.black,
            backgroundColor: Colors.amber,
@@ -45,21 +46,24 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   borderSide: BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   borderSide: BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
-                                hintText: "Username:",
+                                labelText: "Username",
+                                hintText: "Enter your username",
+                                prefixIcon: Icon(Icons.person_outline,color: Colors.white,),
+                                labelStyle: TextStyle(color: Colors.white),
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                 )),
                           ),
                           SizedBox(
@@ -69,21 +73,25 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   borderSide: BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   borderSide: BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
-                                hintText: "Email:",
+                                labelText: "Email",
+                                hintText: "Enter your email",
+                                prefixIcon: Icon(Icons.email_outlined,color: Colors.white,),
+
                                 hintStyle: TextStyle(color: Colors.white),
+                                labelStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                 )),
                           ),
                           SizedBox(
@@ -94,21 +102,24 @@ class _RegisterPageState extends State<RegisterPage> {
                             obscureText: true,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   borderSide: BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   borderSide: BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
-                                hintText: "Password:",
+                                hintText:'Enter your password',
+                                labelText: "Password",
+                                prefixIcon: Icon(Icons.lock_outline,color: Colors.white,),
+                                labelStyle: TextStyle(color: Colors.white),
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                 )),
                           ),
                           SizedBox(
@@ -129,7 +140,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 backgroundColor: Colors.amber,
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),

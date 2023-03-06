@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:household/pages/chat.dart';
-import 'package:household/pages/home.dart';
-import 'package:household/pages/news.dart';
+import 'package:household/fertilizers/chat.dart';
+import 'package:household/ui/home.dart';
+import 'package:household/news.dart';
 import 'package:household/pages/profile.dart';
 
 class BotNavBar extends StatefulWidget {
@@ -17,8 +17,9 @@ class _BotNavBarState extends State<BotNavBar> {
     Home(),
     News(),
     Chat(),
-    Profile(),
+    Profile(charge: 'daily,Rs.1000', name: 'Mr.Shivraj Tharu ', email: 'shivrajtharu62@gmail.com',),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

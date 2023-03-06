@@ -18,7 +18,7 @@ class _DeletePageState extends State<DeletePage> {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.amber,
-                title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text('Agro Service',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black
             ),

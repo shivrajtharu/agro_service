@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:household/pages/account_page.dart';
-import 'package:household/pages/agricultural_tools_owners_page.dart';
-import 'package:household/pages/balers_owners_page.dart';
-import 'package:household/pages/fertilizer_spreader_owner_page.dart';
-import 'package:household/pages/mini_tractors_owners_page.dart';
-import 'package:household/pages/plows_owners_page.dart';
-import 'package:household/pages/pump_sets_owners_page.dart';
-import 'package:household/pages/rotary_owners_page.dart';
-import 'package:household/pages/tractor_owners_page.dart';
-import 'package:household/pages/trailers_owners_page.dart';
-import 'Seeders_owners_page.dart';
-import 'combine_harvester_owner_page.dart';
-
+import 'package:household/owners/agricultural_tools_owners_page.dart';
+import 'package:household/owners/balers_owners_page.dart';
+import 'package:household/owners/fertilizer_spreader_owner_page.dart';
+import 'package:household/owners/plows_owners_page.dart';
+import 'package:household/owners/rotary_owners_page.dart';
+import '../owners/combine_harvester_owner_page.dart';
+import '../owners/mini_tractors_owners_page.dart';
+import '../owners/pump_sets_owners_page.dart';
+import '../owners/seeders_owners_page.dart';
+import '../owners/tractor_owners_page.dart';
+import '../owners/trailers_owners_page.dart';
 class MachineTypesPage extends StatefulWidget {
   const MachineTypesPage({Key? key}) : super(key: key);
 
@@ -44,14 +42,10 @@ class _MachineTypesPageState extends State<MachineTypesPage> {
             )
           ],
         ),
-        body: Column(
-          children: [
-            Container(
-              height: 655,
-              child: SingleChildScrollView(
+        body: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.only(top: 10,bottom: 5),
                   child: Stack(
                       children: [
                         Column(
@@ -359,62 +353,6 @@ class _MachineTypesPageState extends State<MachineTypesPage> {
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.only(left: 55),
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AccountPage(),));
-                        },
-                        child: Icon(Icons.account_balance_wallet,size: 30,)),
-                  ),
-                  SizedBox(width: 70,),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.pinkAccent,
-                        borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: InkWell(
-                        onTap: (){
-
-                        },
-                        child: Icon(Icons.notes_rounded,size: 30,)),
-                  ),
-                  SizedBox(width: 70,),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: InkWell(
-                        onTap: (){
-
-                        },
-                        child: Icon(Icons.add,size: 30,)),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
 

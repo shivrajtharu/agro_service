@@ -37,9 +37,11 @@ dependencies:
 #  video_player: ^2.5.1
   get: ^4.6.5
   intl: ^0.18.0
-#  flutter_swiper: ^1.1.6
+  flutter_swiper: ^1.1.6
   font_awesome_flutter: ^8.2.0
   groovin_material_icons: ^1.1.6
+  url_launcher: ^6.1.10
+  easy_splash_screen: ^1.0.4
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,7 +51,7 @@ dependencies:
   fast_contacts: ^1.1.1
   permission_handler: ^8.1.6
   contacts_service: ^0.6.3
-#  carousel_slider:
+  carousel_slider:
   animated_text_kit: ^4.2.2
 
 dev_dependencies:
@@ -60,7 +62,7 @@ dev_dependencies:
 flutter_icons:
   android: true
 #  ios: true
-  image_path: "assets/images/logo.png"
+#  image_path: "assets/images/logo.png"
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

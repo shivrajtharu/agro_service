@@ -18,7 +18,7 @@ class _SharePageState extends State<SharePage> {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
                 backgroundColor: Colors.amber,
-                title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
+                title: Text('Agro Service',style: TextStyle(fontWeight: FontWeight.bold)),
                 centerTitle: true,
                 foregroundColor: Colors.black
             ),

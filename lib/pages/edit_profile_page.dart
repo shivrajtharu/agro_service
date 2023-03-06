@@ -1,37 +1,80 @@
 import 'package:flutter/material.dart';
+
 class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key}) : super(key: key);
+  final String name;
+  final String email;
+  final String charge;
+
+  EditProfile({
+    required this.name,
+    required this.email,
+    required this.charge,
+  });
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  _EditProfileState createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
+  late TextEditingController _nameController;
+  late TextEditingController _emailController;
+  late TextEditingController _chargeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController(text: widget.name);
+    _emailController = TextEditingController(text: widget.email);
+    _chargeController = TextEditingController(text: widget.charge);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration:BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/all.jpg'),fit:BoxFit.cover)),
-        child: Scaffold(
-            backgroundColor: Colors.transparent,
-            appBar: AppBar(
-                backgroundColor: Colors.amber,
-                title: Text('Household',style: TextStyle(fontWeight: FontWeight.bold)),
-                centerTitle: true,
-                foregroundColor: Colors.black
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text('Edit Profile'),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.amber,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(
+                labelText: 'Name',
+              ),
             ),
-            body: Stack(
-              children: [
-                Container(
-                    child: Center(child: Text("Edit Profile\nPage",style: TextStyle(color: Colors.amber,fontSize: 35,fontWeight:FontWeight.bold),
-                    ),)
-                ),
-              ],
-            )
-        )
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+              ),
+            ),
+            TextField(
+              controller: _chargeController,
+              decoration: InputDecoration(
+                labelText: 'Charge',
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Save changes and go back to profile page
+                Navigator.pop(context, {
+                  'name': _nameController.text,
+                  'email': _emailController.text,
+                  'charge': _chargeController.text,
+                });
+              },
+              child: Text('Save'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-
-

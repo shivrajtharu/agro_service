@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:household/pages/friends_user_page.dart';
+import 'package:household/users/friends_user_page.dart';
 
 
 class User{
