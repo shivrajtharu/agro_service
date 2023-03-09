@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:household/plots/plots_owners_users_page.dart';
 
-import '../users/phosphorus_owners_users_page.dart';
+import '../ui/home.dart';
+
 class User{
   final String username;
   final String email;
@@ -15,15 +17,14 @@ class User{
 
   });
 }
-
-class PhosphorousOwnersPage extends StatefulWidget {
-  const PhosphorousOwnersPage({Key? key}) : super(key: key);
+class PlotsOwnersPage extends StatefulWidget {
+  const PlotsOwnersPage({Key? key}) : super(key: key);
 
   @override
-  State<PhosphorousOwnersPage> createState() => _PhosphorousOwnersPageState();
+  State<PlotsOwnersPage> createState() => _PlotsOwnersPageState();
 }
 
-class _PhosphorousOwnersPageState extends State<PhosphorousOwnersPage> {
+class _PlotsOwnersPageState extends State<PlotsOwnersPage> {
   List<User> users = [
     const User(
         username :'Shivraj Tharu',
@@ -102,7 +103,13 @@ class _PhosphorousOwnersPageState extends State<PhosphorousOwnersPage> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Phosphorous Owners",style: TextStyle(fontWeight: FontWeight.bold)
+          leading: InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (
+                    context) => Home()));
+              },
+              child: Icon(Icons.home,size: 30,)),
+          title: Text("Plots Owners",style: TextStyle(fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
           foregroundColor: Colors.black,
@@ -134,7 +141,7 @@ class _PhosphorousOwnersPageState extends State<PhosphorousOwnersPage> {
                     color: Colors.grey.shade100,
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PhosphorusOwnersUsersPage(user:user,),));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PlotsOwnersUserPage(user:user,),));
                       },
                       child: ListTile(
                         leading: CircleAvatar(
@@ -232,7 +239,7 @@ class MYSearchDelegate extends SearchDelegate{
         icon:Icon(Icons.clear),
         onPressed: () {
           if (query.isEmpty) {
-            close(context, PhosphorousOwnersPage());
+            close(context,PlotsOwnersPage());
           } else {
             query = '';
           }
@@ -244,7 +251,7 @@ class MYSearchDelegate extends SearchDelegate{
   @override
   Widget? buildLeading(BuildContext context)=>IconButton(
     icon: Icon(Icons.arrow_back),
-    onPressed: ()=>close(context,PhosphorousOwnersPage()),
+    onPressed: ()=>close(context,PlotsOwnersPage()),
   );
   // TODO: implement buildLeading
 
@@ -280,4 +287,6 @@ class MYSearchDelegate extends SearchDelegate{
     // TODO: implement buildSuggestions
   }
 }
+
+
 

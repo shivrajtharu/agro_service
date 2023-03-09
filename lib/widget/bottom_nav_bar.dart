@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:household/fertilizers/chat.dart';
+import 'package:household/chat/chat.dart';
 import 'package:household/ui/home.dart';
 import 'package:household/news.dart';
 import 'package:household/pages/profile.dart';

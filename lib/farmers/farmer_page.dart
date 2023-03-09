@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'workers_user_page.dart';
+import '../ui/home.dart';
+import 'farmers_user_page.dart';
 
 class User{
    final String username;
@@ -15,13 +16,13 @@ class User{
 });
 }
 
-class WorkersPage extends StatefulWidget {
-  const WorkersPage({Key? key}) : super(key: key);
+class Farmer extends StatefulWidget {
+  const Farmer({Key? key}) : super(key: key);
   @override
-  State<WorkersPage> createState() => _WorkersPageState();
+  State<Farmer> createState() => _FarmerState();
 }
 
-class _WorkersPageState extends State<WorkersPage> {
+class _FarmerState extends State<Farmer> {
   List<User> users = [
     const User(
       username :'Shivraj Tharu',
@@ -100,6 +101,12 @@ class _WorkersPageState extends State<WorkersPage> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
+          leading: InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (
+                  context) => Home()));
+            },
+              child: Icon(Icons.home,size: 30,)),
           title: Text("Farmers",style: TextStyle(fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
@@ -132,7 +139,7 @@ class _WorkersPageState extends State<WorkersPage> {
                            color: Colors.grey.shade100,
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>WorkersUserPage(user:user,),));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FarmersUserPage(user:user,),));
                             },
                             child: ListTile(
                                 leading: CircleAvatar(
@@ -230,7 +237,7 @@ class MYSearchDelegate extends SearchDelegate{
       icon:Icon(Icons.clear),
     onPressed: () {
         if (query.isEmpty) {
-          close(context, WorkersPage());
+          close(context, Farmer());
         } else {
           query = '';
         }
@@ -242,7 +249,7 @@ class MYSearchDelegate extends SearchDelegate{
   @override
   Widget? buildLeading(BuildContext context)=>IconButton(
     icon: Icon(Icons.arrow_back),
-    onPressed: ()=>close(context,WorkersPage()),
+    onPressed: ()=>close(context,Farmer()),
   );
     // TODO: implement buildLeading
 

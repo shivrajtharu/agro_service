@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:household/fertilizers/dap_details_page.dart';
-import '../report.dart';
+import '../Report.dart';
+import 'package:household/follow_page.dart';
+import 'package:household/machines/machine_details_page.dart';
 import '../pages/block_page.dart';
 import '../pages/field_page.dart';
-import '../follow_page.dart';
 import '../data/info_page.dart';
 import '../data/link_page.dart';
 import '../pages/lives_in_page.dart';
 import '../pages/location_page.dart';
+import 'machine_details_page.dart';
 
-class DapOwnersUsersPage extends StatelessWidget {
+class MachineOwnersUserPage extends StatelessWidget {
   final user;
-  const DapOwnersUsersPage({Key? key, required this.user}) : super(key: key);
+  const MachineOwnersUserPage({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          elevation: 0,
+        elevation: 0,
           backgroundColor: Colors.amber,
           title: Text('Owners Details',style: TextStyle(fontWeight: FontWeight.bold)),
           centerTitle: true,
@@ -49,7 +50,7 @@ class DapOwnersUsersPage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10 ),
                     child: ElevatedButton.icon(onPressed:() {
                       Navigator.push(context, MaterialPageRoute(builder: (
-                          context) => DapDetailsPage()));
+                          context) => MachineDetailsPage()));
                     },
                       icon: Icon(
                         Icons.miscellaneous_services_rounded,
@@ -264,5 +265,4 @@ class DapOwnersUsersPage extends StatelessWidget {
     }
   }
 }
-
 

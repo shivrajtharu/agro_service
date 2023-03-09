@@ -6,10 +6,12 @@ class LoginTypePage extends StatefulWidget {
 }
 
 class _LoginTypePageState extends State<LoginTypePage> {
-  final _formKey = GlobalKey<FormState>();
+  String _userType = 'Farmer';
   String _username = '';
   String _password = '';
-  String _userType = '';
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,160 +23,143 @@ class _LoginTypePageState extends State<LoginTypePage> {
         foregroundColor: Colors.black,
         backgroundColor: Colors.amber,
       ),
-        body: Column(
-          children: [
-            Container(
-                   child: Container(
-                      height: 200,
-                      width: 200,
-                      margin:EdgeInsets.only(top:30,bottom: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/logo.png'),fit: BoxFit.fill,
-
-                          )
-                      ),
-                    ),
+      body: Column(
+        children: [
+          Container(
+            child: Container(
+              height: 200,
+              width: 200,
+              margin:EdgeInsets.only(top:30,bottom: 10),
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/logo.png'),fit: BoxFit.fill,
+                  )
+              ),
             ),
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Container(
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      TextFormField(
-                        decoration: InputDecoration(
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    TextFormField(
+                      controller: _usernameController,
+                      decoration: InputDecoration(
                           labelText: 'Username',
                           hintText: 'Enter your username',
                           prefixIcon: Icon(Icons.person_outline)
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your username';
-                          }
-                          return null;
-                        },
-                        onSaved: (value) {
-                          _username = value!;
-                        },
                       ),
-                      TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your username';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _username = value!;
+                      },
+                    ),
+
+                    TextFormField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
                           labelText: 'Password',
                           hintText: 'Enter your password',
-                            prefixIcon: Icon(Icons.lock_outline)
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
-                        onSaved: (value) {
-                          _password = value!;
-                        },
+                          prefixIcon: Icon(Icons.lock_outline)
                       ),
-                      SizedBox(height: 30.0),
-                      Text('Select User Type:'),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Radio(
-                              value: 'farmer',
-                              groupValue: _userType,
-                              onChanged: (value) {
-                                setState(() {
-                                  _userType = value as String;
-                                });
-                              },
-                            ),
-                            Text('Farmer'),
-                            Radio(
-                              value: 'machine owner',
-                              groupValue: _userType,
-                              onChanged: (value) {
-                                setState(() {
-                                  _userType = value as String;
-                                });
-                              },
-                            ),
-                            Text('Machine owner'),
-                            Radio(
-                              value: 'plot',
-                              groupValue: _userType,
-                              onChanged: (value) {
-                                setState(() {
-                                  _userType = value as String;
-                                });
-                              },
-                            ),
-                            Text('Plot owner'),
-                            Radio(
-                              value: 'fertilizer',
-                              groupValue: _userType,
-                              onChanged: (value) {
-                                setState(() {
-                                  _userType = value as String;
-                                });
-                              },
-                            ),
-                            Text('Fertilizer owner'),
-                          ],
-                        ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _password = value!;
+                      },
+                    ),
+                    SizedBox(height: 30,),
+                    Text('Select user type: '),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Radio(
+                            value: 'Farmer',
+                            groupValue: _userType,
+                            onChanged: (value) {
+                              setState(() {
+                                _userType = value as String;
+                              });
+                            },
+                          ),
+                          Text('Farmer'),
+                          Radio(
+                            value: 'Machine Owner',
+                            groupValue: _userType,
+                            onChanged: (value) {
+                              setState(() {
+                                _userType = value as String;
+                              });
+                            },
+                          ),
+                          Text('Machine Owner'),
+                          Radio(
+                            value: 'Plot Owner',
+                            groupValue: _userType,
+                            onChanged: (value) {
+                              setState(() {
+                                _userType = value as String;
+                              });
+                            },
+                          ),
+                          Text('Plot Owner'),
+                          Radio(
+                            value: 'Fertilizer Owner',
+                            groupValue: _userType,
+                            onChanged: (value) {
+                              setState(() {
+                                _userType = value as String;
+                              });
+                            },
+                          ),
+                          Text('Fertilizer Owner'),
+                        ],
                       ),
-                      SizedBox(height: 10,),
-                      ElevatedButton(
-                        onPressed: () {
-                          _handleLogin();
-                          Navigator.pushNamed(context,'home');
-                        },
-                        child: Text('Log in'),
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 24.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Validate login credentials and navigate to appropriate page
+                        _username = _usernameController.text;
+                        _password = _passwordController.text;
+
+                        // Use username, password, and _userType to validate login credentials
+                        // and navigate to appropriate page based on _userType
+                        if (_userType == 'Farmer') {
+                          Navigator.pushNamed(context, 'farmer');
+                        } else if (_userType == 'Machine Owner') {
+                          Navigator.pushNamed(context, 'machine owner');
+                        } else if (_userType == 'Plot Owner') {
+                          Navigator.pushNamed(context, 'plot owner');
+                        } else if (_userType == 'Fertilizer Owner') {
+                          Navigator.pushNamed(context, 'fertilizer owner');
+                        }
+                      },
+                      child: Text('Login'),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
-      );
-  }
-
-  void _handleLogin() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      // Perform login action based on user type
-      if (_userType == 'farmer') {
-        // switch (hashCode) {
-        //   case 0:
-        //     Navigator.of(context).push(
-        //       MaterialPageRoute(builder: (context) => Home()),
-        //     );
-            // Log in as worker
-            print(
-                'Logging in as farmer with username $_username and password $_password');
-            // break;
-        // }
-      } else if (_userType == 'machine owner') {
-            // Log in as owner
-            print(
-                'Logging in as machine owner with username $_username and password $_password');
-      } else if (_userType == 'plot owner') {
-            // Log in as customer
-            print(
-                'Logging in as plot owner with username $_username and password $_password');
-      }
-      else if (_userType == 'fertilizer owner') {
-        // Log in as customer
-        print(
-            'Logging in as fertilizer owner with username $_username and password $_password');
-      }
-    }
+          ),
+        ],
+      ),
+    );
   }
 }

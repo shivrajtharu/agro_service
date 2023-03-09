@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TractorsDetailsPage extends StatelessWidget {
-  const TractorsDetailsPage({Key? key}) : super(key: key);
+class MachineDetailsPage extends StatelessWidget {
+  const MachineDetailsPage({Key? key}) : super(key: key);
 
   Widget _categories({required String name}){
     return Container(

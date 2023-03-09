@@ -8,9 +8,10 @@ import '../chat/message_page.dart';
 import '../pages/block_page.dart';
 import '../data/info_page.dart';
 import '../report.dart';
-class WorkersUserPage extends StatelessWidget {
+
+class FarmersUserPage extends StatelessWidget {
   final  user;
-  const WorkersUserPage({
+  const FarmersUserPage({
     Key? key,required this.user,
   }) : super(key: key);
 

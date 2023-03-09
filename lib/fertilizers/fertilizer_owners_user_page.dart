@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Report.dart';
-import '../machines/balers_details_page.dart';
+import 'fertilizer_details_page.dart';
+import '../report.dart';
 import '../pages/block_page.dart';
 import '../pages/field_page.dart';
 import '../follow_page.dart';
@@ -9,9 +9,9 @@ import '../data/link_page.dart';
 import '../pages/lives_in_page.dart';
 import '../pages/location_page.dart';
 
-class BalersOwnersUserPage extends StatelessWidget {
+class FertilizerOwnersUsersPage extends StatelessWidget {
   final user;
-  const BalersOwnersUserPage({Key? key, required this.user}) : super(key: key);
+  const FertilizerOwnersUsersPage({Key? key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class BalersOwnersUserPage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10 ),
                     child: ElevatedButton.icon(onPressed:() {
                       Navigator.push(context, MaterialPageRoute(builder: (
-                          context) => BalersDetailsPage()));
+                          context) => FertilizerDetailsPage()));
                     },
                       icon: Icon(
                         Icons.miscellaneous_services_rounded,
@@ -264,5 +264,4 @@ class BalersOwnersUserPage extends StatelessWidget {
     }
   }
 }
-
 

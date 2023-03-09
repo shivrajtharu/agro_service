@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:household/users/micronutrient_owners_users_page.dart';
+
+import '../ui/home.dart';
+import 'fertilizer_owners_user_page.dart';
 
 class User{
   final String username;
@@ -15,14 +17,14 @@ class User{
 
   });
 }
-class MicronutrientOwnersPage extends StatefulWidget {
-  const MicronutrientOwnersPage({Key? key}) : super(key: key);
+class FertilizerOwnersPage extends StatefulWidget {
+  const FertilizerOwnersPage({Key? key}) : super(key: key);
 
   @override
-  State<MicronutrientOwnersPage> createState() => _MicronutrientOwnersPageState();
+  State<FertilizerOwnersPage> createState() => _FertilizerOwnersPageState();
 }
 
-class _MicronutrientOwnersPageState extends State<MicronutrientOwnersPage> {
+class _FertilizerOwnersPageState extends State<FertilizerOwnersPage> {
   List<User> users = [
     const User(
         username :'Shivraj Tharu',
@@ -101,7 +103,13 @@ class _MicronutrientOwnersPageState extends State<MicronutrientOwnersPage> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Micronutrient Owners",style: TextStyle(fontWeight: FontWeight.bold)
+          leading: InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (
+                    context) => Home()));
+              },
+              child: Icon(Icons.home,size: 30,)),
+          title: Text("Fertilizer Owners",style: TextStyle(fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
           foregroundColor: Colors.black,
@@ -133,7 +141,7 @@ class _MicronutrientOwnersPageState extends State<MicronutrientOwnersPage> {
                     color: Colors.grey.shade100,
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MicronutrientOwnersUsersPage(user:user,),));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FertilizerOwnersUsersPage(user:user,),));
                       },
                       child: ListTile(
                         leading: CircleAvatar(
@@ -231,7 +239,7 @@ class MYSearchDelegate extends SearchDelegate{
         icon:Icon(Icons.clear),
         onPressed: () {
           if (query.isEmpty) {
-            close(context, MicronutrientOwnersPage());
+            close(context, FertilizerOwnersPage());
           } else {
             query = '';
           }
@@ -243,7 +251,7 @@ class MYSearchDelegate extends SearchDelegate{
   @override
   Widget? buildLeading(BuildContext context)=>IconButton(
     icon: Icon(Icons.arrow_back),
-    onPressed: ()=>close(context,MicronutrientOwnersPage()),
+    onPressed: ()=>close(context,FertilizerOwnersPage()),
   );
   // TODO: implement buildLeading
 
@@ -279,6 +287,3 @@ class MYSearchDelegate extends SearchDelegate{
     // TODO: implement buildSuggestions
   }
 }
-
-
-

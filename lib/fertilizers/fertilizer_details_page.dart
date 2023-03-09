@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MicronutrientDetailsPage extends StatelessWidget {
-  const MicronutrientDetailsPage({Key? key}) : super(key: key);
+class FertilizerDetailsPage extends StatelessWidget {
+  const FertilizerDetailsPage({Key? key}) : super(key: key);
 
   Widget _categories({required String name}){
     return Container(
       height: 60,
-      width: 180,
+      width: 151,
       decoration: BoxDecoration(
           color: Color(0xfffafbfd),
           borderRadius: BorderRadius.circular(10)
@@ -27,7 +27,7 @@ class MicronutrientDetailsPage extends StatelessWidget {
   Widget _bottomContainer({required Color color,required double price,
     required String name,required String title,required String subtitle,required String images}){
     return Container(
-      height: 190,
+      height: 200,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
@@ -162,7 +162,7 @@ class MicronutrientDetailsPage extends StatelessWidget {
                             width: 171,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage('assets/images/micronutrient_title.png',),
+                                  image: AssetImage('assets/images/organic_title.png',),
                                 ),
                                 borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(10),
@@ -189,13 +189,19 @@ class MicronutrientDetailsPage extends StatelessWidget {
                         child: Row(
                           children: [
                             _categories(
-                                name: 'Boron'),
+                                name: 'Cow dung'),
                             SizedBox(width: 10,),
                             _categories(
-                                name: 'Copper Sulphate'),
+                                name: 'Bio'),
                             SizedBox(width: 10,),
                             _categories(
-                                name: 'Zinc'),
+                                name: 'Leaf mould'),
+                            SizedBox(width: 10,),
+                            _categories(
+                                name: 'Vermicompost'),
+                            SizedBox(width: 10,),
+                            _categories(
+                                name: 'Wood Ash'),
                           ],
                         ),
                       ),
@@ -208,29 +214,47 @@ class MicronutrientDetailsPage extends StatelessWidget {
                           children: [
                             _bottomContainer(
                                 color: Color(0xffffeedf),
-                                price: 100,
-                                name: 'Boron',
+                                price: 1000,
+                                name: 'Cow Dung',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/boron.png'
+                                images: 'assets/images/cow_dung.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(204, 204, 204, 255),
-                                price: 150,
-                                name: 'Copper Sulphate',
+                                price: 1500,
+                                name: 'Bio',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/copper_sulphate.png'
+                                images: 'assets/images/bio.png'
                             ),
                             SizedBox(height: 20,),
                             _bottomContainer(
                                 color: Color.fromARGB(204, 204, 255, 255),
-                                price: 200,
-                                name: 'Zinc',
+                                price: 1700,
+                                name: 'Leaf mould ',
                                 title: 'We offer services to improve',
                                 subtitle: 'your quality of life',
-                                images: 'assets/images/zinc.png'
+                                images: 'assets/images/leaf_mould.png'
+                            ),
+                            SizedBox(height: 20,),
+                            _bottomContainer(
+                                color: Color.fromARGB(55, 204, 204, 55),
+                                price: 2000,
+                                name: 'Vermi compost',
+                                title: 'We offer services to improve',
+                                subtitle: 'your quality of life',
+                                images: 'assets/images/vermicompost.png'
+                            ),
+                            SizedBox(height: 20,),
+                            _bottomContainer(
+                                color: Color.fromARGB(102, 102, 255, 153),
+                                price: 500,
+                                name: 'Wood Ash',
+                                title: 'We offer services to improve',
+                                subtitle: 'your quality of life',
+                                images: 'assets/images/wood_ash.png'
                             ),
                           ],
                         ),

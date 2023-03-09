@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:household/fertilizers/fertilizer_owners_page.dart';
+import 'package:household/machines/machine_owners_page.dart';
 import 'package:household/models/colors.dart';
 import 'package:household/data/Notification_view.dart';
 import 'package:household/pages/calculator_page.dart';
 import 'package:household/pages/calendar_page.dart';
-import 'package:household/pages/fertilizer_types_page.dart';
 import 'package:household/widget/drawer.dart';
-import 'package:household/owners/plots_owners_page.dart';
+import 'package:household/plots/plots_owners_page.dart';
 import 'package:household/settings_page.dart';
 import 'package:household/pages/share_page.dart';
 import 'package:household/pages/time_sheets.dart';
-import 'package:household/workers/workers_page.dart';
 import 'package:household/ui/login_page.dart';
-import '../pages/machine_types_page.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import '../farmers/farmer_page.dart';
+// import 'package:flutter_swiper/flutter_swiper.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
                  margin:EdgeInsets.all(5),
                  alignment: Alignment.center,
                  constraints: BoxConstraints.expand(height: 225),
-                 child: MySwiper(
+                 /*child: MySwiper(
                    imageUrls: [
                      'https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZhcm1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                      'https://images.unsplash.com/photo-1627920769842-6887c6df05ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGZhcm1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
                      'https://images.unsplash.com/photo-1659021181759-2f987070b6c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fG1hY2hpbmVzJTIwb24lMjBmYXJtaW5nJTIwZmllbGR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                      'https://images.unsplash.com/photo-1532929900024-6413d2ed39c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTgzfHxmYXJtZXJzJTIwb24lMjBmYXJtaW5nJTIwZmllbGR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
                    ],
-                 ),
+                 ),*/
                ),
                Padding(
                 padding: const EdgeInsets.only(top:10),
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (
-                                  context) => WorkersPage()));
+                                  context) => Farmer()));
                             },
                             child: Column(
                               children: [
@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (
-                                  context) => MachineTypesPage()));
+                                  context) => MachineOwnersPage()));
                             },
                             child: Column(
                               children: [
@@ -179,7 +179,7 @@ class _HomeState extends State<Home> {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (
-                                  context) => FertilizerTypesPage()));
+                                  context) => FertilizerOwnersPage()));
                             },
                             child: Column(
                               children: [
@@ -381,7 +381,7 @@ class WorkerSearchDelegate extends SearchDelegate{
         icon:Icon(Icons.clear),
         onPressed: () {
           if (query.isEmpty) {
-            close(context, WorkersPage());
+            close(context, Farmer());
           } else {
             query = '';
           }
@@ -393,7 +393,7 @@ class WorkerSearchDelegate extends SearchDelegate{
   @override
   Widget? buildLeading(BuildContext context)=>IconButton(
     icon: Icon(Icons.arrow_back),
-    onPressed: ()=>close(context,WorkersPage()),
+    onPressed: ()=>close(context,Farmer()),
   );
   // TODO: implement buildLeading
 
@@ -429,7 +429,7 @@ class WorkerSearchDelegate extends SearchDelegate{
     // TODO: implement buildSuggestions
   }
 }
-class MySwiper extends StatelessWidget {
+/*class MySwiper extends StatelessWidget {
   final List<String> imageUrls;
 
   MySwiper({required this.imageUrls});
@@ -449,4 +449,4 @@ class MySwiper extends StatelessWidget {
       itemCount: imageUrls.length,
     );
   }
-}
+}*/

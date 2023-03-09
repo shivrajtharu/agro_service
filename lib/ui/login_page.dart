@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,6 +12,43 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isObscure = true;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
+
+  Future<void> _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final response = await http.post(
+      Uri.parse('http://localhost:8000/login'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'email': _emailController.text,
+        'password': _passwordController.text,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final token = json.decode(response.body)['token'];
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('token', token);
+
+      Navigator.of(context).pushReplacementNamed('/dashboard');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Invalid credentials.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +65,11 @@ class _LoginPageState extends State<LoginPage> {
           foregroundColor: Colors.black,
           backgroundColor: Colors.amber,
         ),
-        body: Stack(
+        body: _isLoading
+            ? Center(
+          child: CircularProgressIndicator(),
+        )
+        :Stack(
           children: [
             Container(
               padding:EdgeInsets.only(top: 80,left: 115) ,
@@ -38,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextField(
+                        controller: _emailController,
                         decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
                             filled: true,
@@ -54,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: 30,
                       ),
                       TextField(
+                        controller: _passwordController,
                         obscureText: _isObscure,
                         decoration: InputDecoration(
                           fillColor: Colors.grey.shade100,border: OutlineInputBorder(
@@ -91,7 +137,8 @@ class _LoginPageState extends State<LoginPage> {
                                child: TextButton(child: Text('LOGIN',style: TextStyle(fontSize: 15,color: Colors.black)),
                                  onPressed: (){
                                     Navigator.pushNamed(context,'loginType');
-                                 },),
+                                 },
+                               ),
                             ),
                         ],
                       ),
