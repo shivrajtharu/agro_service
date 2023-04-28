@@ -1,6 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:household/ui/register_page.dart';
+import 'account_types.dart';
 import 'login_page.dart';
 
 class CoverPage extends StatelessWidget {
@@ -58,7 +58,7 @@ class CoverPage extends StatelessWidget {
                                                       child: Text('Sign-Up'),
                                                       onPressed: (){
                                                         Navigator.of(context).push(MaterialPageRoute(
-                                                          builder: (context) => RegisterPage(),));
+                                                          builder: (context) => AccountTypePage(),));
                                                       },
                                                     ),
                                                   ]
@@ -537,7 +537,7 @@ class CoverPage extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         image: DecorationImage(
-                                            image: AssetImage('assets/images/harvester2.png'),fit: BoxFit.cover)
+                                            image: AssetImage('assets/images/harvester.png'),fit: BoxFit.cover)
                                     ),
                                   ),
                                   SizedBox(height: 15,),

@@ -1,277 +1,538 @@
 import 'package:flutter/material.dart';
+import '../models/post_model.dart';
 
-class MachineDetailsPage extends StatelessWidget {
-  const MachineDetailsPage({Key? key}) : super(key: key);
-
-  Widget _categories({required String name}){
-    return Container(
-      height: 60,
-      width: 120,
-      decoration: BoxDecoration(
-         color: Color(0xfffafbfd),
-        borderRadius: BorderRadius.circular(10)
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            height: 50,
-            width: 45,
-            child: Icon(Icons.construction,color: Color(0xff47648c),),
-          ),
-          Text(name),
-        ],
-      ),
-    );
-  }
-  Widget _bottomContainer({required Color color,required double price,
-    required String name,required String title,required String subtitle,required String images}){
-    return Container(
-      height: 160,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 190,
-            padding: EdgeInsets.only(left: 20,right: 20,top: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('\$ $price HR'),
-                SizedBox(height: 10,),
-                Text(name,style: TextStyle(
-                  fontSize: 20,
-                  color: Color(0xff0c3469),
-                  fontWeight: FontWeight.bold,
-                ),),
-                SizedBox(height: 15,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title,style: TextStyle(
-                        color: Color(0xff0c3469)),),
-                    SizedBox(height: 5,),
-                    Text(subtitle,style: TextStyle(
-                        color: Color(0xff0c3469)),),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Container(
-            height: 190,
-            width: 162,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
-              image: DecorationImage(
-                 fit: BoxFit.cover,
-                image: AssetImage(images),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
+class MachineDetails extends StatelessWidget {
+  final Datum machineData;
+  final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _itemController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _contactController = TextEditingController();
+  MachineDetails({required this.machineData});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-          backgroundColor: Colors.amber,
-          title: Text('Our Services',style: TextStyle(fontWeight: FontWeight.bold)),
-          centerTitle: true,
-          foregroundColor: Colors.black
+        title: Text(machineData.fullname),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.amber,
       ),
-      body:SafeArea(
-        child: ListView(
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              color: Color(0xfff3f3f3),
-              height: 330,
-              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      prefixIcon: Icon(Icons.search,color: Color(0xff0c3469),),
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      hintText: 'Search any things...'
-                    ),
+            Column(
+              children: [
+                Center(
+                  child: CircleAvatar(
+                    radius: 60,
+                    child: Text(getUserCharacter(machineData.fullname),
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white
+                        )),
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      color: Color(0xfffafbfd),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('You are in good',style: TextStyle(
-                                        fontSize: 20,
-                                        color: Color(0xff0c3469),
-                                        fontWeight: FontWeight.bold),),
-                                    Text('Hand With US', style: TextStyle(
-                                        fontSize: 22,color: Color(0xff0c3469),
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(height: 15,),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('We are delighted\nTo provide the',style: TextStyle(
-                                          color: Color(0xff0c3469)
-                                        ),),
-                                        Text('Best Services',style: TextStyle(
-                                            color: Color(0xff0c3469)
-                                        ),)
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 200,
-                          width: 171,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/tractor1.png',),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                            )
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                ),
+                SizedBox(height: 10,),
+                Text(
+                  '${machineData.fullname}',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  '${machineData.email}',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  '${machineData.address}',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  '${machineData.active_status ? 'Active' : 'Inactive'}',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+            Divider(
+              color: Colors.grey,
+            ),
+            Container(
+              color: Colors.grey,
+              child: Container(
+                alignment: Alignment.center,
+                width: double.infinity,
+                height: 40,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/cover_topic.png'),fit:BoxFit.cover)
+                ),
+                child: Text('Our Services',style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),),
               ),
             ),
             Container(
-              color: Colors.white,
-              child: Column(
-                children: [
-                  Container(
-                    height: 100,
-                    width: double.infinity,
-                    color: Colors.white,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
+              margin: EdgeInsets.only(left: 10,right: 10),
+              color: Colors.grey,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height:300,
+                      margin: EdgeInsets.only(top: 5,bottom: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Column(
                         children: [
-                          _categories(
-                              name: 'Plowing'),
-                          _categories(
-                              name: 'Tilling'),
-                          _categories(
-                              name: 'Planting'),
-                          _categories(
-                              name: 'Disking'),
-                          _categories(
-                              name: 'Harrowing'),
-                          _categories(
-                              name: 'trailering'),
+                          Container(
+                            margin: EdgeInsets.only(left: 5,right: 5,top: 5),
+                            width: 180,
+                            height: 200,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/images/harvester.png'),fit: BoxFit.cover)
+                            ),
+                          ),
+                          SizedBox(height: 15,),
+                          Container(
+                            child: Column(
+                              children: [
+                                Text('Harvester',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                Text('daily,Rs.500\nhourly,Rs.100',style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                                ElevatedButton(onPressed: (){
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Send Details'),
+                                        content: Form(
+                                          key: _formKey,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              TextFormField(
+                                                controller: _nameController,
+                                                decoration: InputDecoration(labelText: 'Name'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your name';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _itemController,
+                                                decoration: InputDecoration(labelText: 'ItemName'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your ItemName';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _addressController,
+                                                decoration: InputDecoration(labelText: 'Address'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your address';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _contactController,
+                                                decoration: InputDecoration(labelText: 'Contact'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your contact';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: Text('Cancel'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          ElevatedButton(
+                                            child: Text('Confirm'),
+                                            onPressed: () {
+
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }, child: Text('Send Request')),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),
-                  ),
-                  Divider(
-                    color: Colors.grey[300],
-                  ),
-                  Padding(
-                    child: Column(
-                      children: [
-                        _bottomContainer(
-                            color: Color(0xffffeedf),
-                            price: 100,
-                            name: 'Plowing',
-                            title: 'We offer services to improve',
-                            subtitle: 'your quality of life',
-                            images: 'assets/images/plowing.png'
-                        ),
-                        SizedBox(height: 20,),
-                        _bottomContainer(
-                            color: Color.fromARGB(204, 204, 204, 255),
-                            price: 150,
-                            name: 'Tilling',
-                            title: 'We offer services to improve',
-                            subtitle: 'your quality of life',
-                            images: 'assets/images/tilling.png'
-                        ),
-                        SizedBox(height: 20,),
-                        _bottomContainer(
-                            color: Color.fromARGB(204, 204, 255, 255),
-                            price: 200,
-                            name: 'Planting',
-                            title: 'We offer services to improve',
-                            subtitle: 'your quality of life',
-                            images: 'assets/images/planting.png'
-                        ),
-                        SizedBox(height: 20,),
-                        _bottomContainer(
-                            color: Color.fromARGB(55, 204, 204, 55),
-                            price: 250,
-                            name: 'Disking',
-                            title: 'We offer services to improve',
-                            subtitle: 'your quality of life',
-                            images: 'assets/images/disking.png'
-                        ),
-                        SizedBox(height: 20,),
-                        _bottomContainer(
-                            color: Color.fromARGB(102, 102, 255, 153),
-                            price: 300,
-                            name: 'Harrowing',
-                            title: 'We offer services to improve',
-                            subtitle: 'your quality of life',
-                            images: 'assets/images/harrowing.png'
-                        ),
-                        SizedBox(height: 20,),
-                        _bottomContainer(
-                            color: Color.fromARGB(255, 255, 204, 204),
-                            price: 500,
-                            name: 'Trailering',
-                            title: 'We offer services to improve',
-                            subtitle: 'your quality of life',
-                            images: 'assets/images/trailering.png'
-                        ),
-                      ],
+                    SizedBox(width: 10,),
+                    Container(
+                      height:300,
+                      margin: EdgeInsets.only(top: 5,bottom: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 5,right: 5,top: 5),
+                            width: 180,
+                            height: 200,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/images/cover_pump_set.png'),fit: BoxFit.cover)
+                            ),
+                          ),
+                          SizedBox(height: 15,),
+                          Container(
+                            child: Column(
+                              children: [
+                                Text('Pump Set',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                Text('daily,Rs.500\nhourly,Rs.100',style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                                ElevatedButton(onPressed: (){
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Send Details'),
+                                        content: Form(
+                                          key: _formKey,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              TextFormField(
+                                                controller: _nameController,
+                                                decoration: InputDecoration(labelText: 'Name'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your name';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _itemController,
+                                                decoration: InputDecoration(labelText: 'ItemName'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your ItemName';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _addressController,
+                                                decoration: InputDecoration(labelText: 'Address'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your address';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _contactController,
+                                                decoration: InputDecoration(labelText: 'Contact'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your contact';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: Text('Cancel'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          ElevatedButton(
+                                            child: Text('Confirm'),
+                                            onPressed: () {
+
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }, child: Text('Send Request')),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                      padding: EdgeInsets.symmetric(horizontal: 20))
-                ],
+                    SizedBox(width: 10,),
+                    Container(
+                      height:300,
+                      margin: EdgeInsets.only(top: 5,bottom: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 5,right: 5,top: 5),
+                            width: 180,
+                            height: 200,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/images/thresher.png'),fit: BoxFit.cover)
+                            ),
+                          ),
+                          SizedBox(height: 15,),
+                          Container(
+                            child: Column(
+                              children: [
+                                Text('Thresher',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                Text('daily,Rs.500\nhourly,Rs.100',style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                                ElevatedButton(onPressed: (){
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Send Details'),
+                                        content: Form(
+                                          key: _formKey,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              TextFormField(
+                                                controller: _nameController,
+                                                decoration: InputDecoration(labelText: 'Name'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your name';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _itemController,
+                                                decoration: InputDecoration(labelText: 'ItemName'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your ItemName';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _addressController,
+                                                decoration: InputDecoration(labelText: 'Address'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your address';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _contactController,
+                                                decoration: InputDecoration(labelText: 'Contact'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your contact';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: Text('Cancel'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          ElevatedButton(
+                                            child: Text('Confirm'),
+                                            onPressed: () {
+
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }, child: Text('Send Request')),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 10,),
+                    Container(
+                      height:300,
+                      margin: EdgeInsets.only(top: 5,bottom: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 5,right: 5,top: 5),
+                            width: 180,
+                            height: 200,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/images/tractor1.png'),fit: BoxFit.cover)
+                            ),
+                          ),
+                          SizedBox(height: 15,),
+                          Container(
+                            child: Column(
+                              children: [
+                                Text('Tractor',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                Text('daily,Rs.500\nhourly,Rs.100',style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                                ElevatedButton(onPressed: (){
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Send Details'),
+                                        content: Form(
+                                          key: _formKey,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              TextFormField(
+                                                controller: _nameController,
+                                                decoration: InputDecoration(labelText: 'Name'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your name';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _itemController,
+                                                decoration: InputDecoration(labelText: 'ItemName'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your ItemName';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _addressController,
+                                                decoration: InputDecoration(labelText: 'Address'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your address';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              TextFormField(
+                                                controller: _contactController,
+                                                decoration: InputDecoration(labelText: 'Contact'),
+                                                validator: (value) {
+                                                  if (value == null || value.isEmpty) {
+                                                    return 'Please enter your contact';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: Text('Cancel'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          ElevatedButton(
+                                            child: Text('Confirm'),
+                                            onPressed: () {
+
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }, child: Text('Send Request')),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
         ),
-      )
+      ),
     );
+  }
+  static String getUserCharacter(String inputString, [int limitTo = 2]) {
+    var buffer = StringBuffer();
+    var wordList = inputString.trim().split(' ');
+
+    if (inputString.isEmpty)
+      return inputString;
+
+    // Take first character if string is a single word
+    if (wordList.length <= 1)
+      return inputString.characters.first;
+
+    /// Fallback to actual word count if
+    /// expected word count is greater
+    if (limitTo > wordList.length) {
+      for (var i = 0; i < wordList.length; i++) {
+        buffer.write(wordList[i][0]);
+      }
+      return buffer.toString();
+    }
+
+    // Handle all other cases
+    for (var i = 0; i < (limitTo ?? wordList.length); i++) {
+      buffer.write(wordList[i][0]);
+    }
+    return buffer.toString();
   }
 }

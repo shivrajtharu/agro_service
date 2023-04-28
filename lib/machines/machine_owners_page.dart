@@ -1,7 +1,219 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import '../models/post_model.dart';
+import 'machine_details_page.dart';
+
+class MachineOwners extends StatefulWidget {
+  @override
+  _MachineOwnersState createState() => _MachineOwnersState();
+}
+
+class _MachineOwnersState extends State<MachineOwners> {
+  List<Datum>? _data;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    final response = await http.get(Uri.parse('http://localhost:8000/home/machine/fetch'));
+    final postModel = postModelFromJson(response.body);
+    setState(() {
+      _data = postModel.data;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text("Machine Owners",style: TextStyle(fontWeight: FontWeight.bold)
+        ),
+        centerTitle: true,
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.amber,
+        actions:<Widget> [
+          IconButton(
+            icon: Padding(
+              padding: const EdgeInsets.only(right:40),
+              child: Icon(Icons.search,size: 30,),
+            ),
+            onPressed: () {
+              showSearch(context: context, delegate: MYSearchDelegate(),);
+            },
+          )
+        ],
+      ),
+      body: _data == null
+          ? Center(
+        child: CircularProgressIndicator(),
+      )
+          : ListView.builder(
+        itemCount: _data?.length,
+        padding: EdgeInsets.only(top:5,bottom: 5),
+        physics: BouncingScrollPhysics(),
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .04,vertical: 4),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            elevation: 0.2,
+            color: Colors.grey.shade100,
+            child: ListTile(
+              leading: CircleAvatar(
+                radius: 25,
+                child: Text(getUserCharacter(_data![index].fullname), style: TextStyle(color: Colors.white)),
+              ),
+              trailing: getStatusContainer(_data![index].active_status),
+              isThreeLine: true,
+              title: Text(_data![index].fullname),
+              subtitle:
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(_data![index].email),
+                  Text(_data![index].address),
+                ],
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => MachineDetails(machineData: _data![index])),
+                );
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  static getStatusContainer(bool status){
+    if(!status){
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(2.0),
+          color: Colors.red,
+        ),
+        child: Text('Inactive', style: TextStyle(color: Colors.white,),
+        ),
+      );
+    }else{
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(2.0),
+          color: Colors.green,
+        ),
+        child: Text('Active', style: TextStyle(color: Colors.white,),
+        ),
+      );
+    }
+  }
+
+  static String getUserCharacter(String inputString, [int limitTo = 2]) {
+    var buffer = StringBuffer();
+    var wordList = inputString.trim().split(' ');
+
+    if (inputString.isEmpty)
+      return inputString;
+
+    // Take first character if string is a single word
+    if (wordList.length <= 1)
+      return inputString.characters.first;
+
+    /// Fallback to actual word count if
+    /// expected word count is greater
+    if (limitTo > wordList.length) {
+      for (var i = 0; i < wordList.length; i++) {
+        buffer.write(wordList[i][0]);
+      }
+      return buffer.toString();
+    }
+
+    // Handle all other cases
+    for (var i = 0; i < (limitTo ?? wordList.length); i++) {
+      buffer.write(wordList[i][0]);
+    }
+    return buffer.toString();
+  }
+}
+class MYSearchDelegate extends SearchDelegate{
+  List<String>searchResults = [
+    'Shivraj Tharu',
+    'Sulav Dahal',
+    'Dilip Chaudhary',
+    'Raj Tharu',
+    'Anil Singh Dhami',
+    'Utsav Gautam',
+    'Abisekh Giri',
+    'Ritesh Yadav',
+    'Ajay Tharu',
+    'Bijay Tharu',
+
+  ];
+
+  // String? get username => null;
+  @override
+  List<Widget>? buildActions(BuildContext context)=>[
+    IconButton(
+        icon:Icon(Icons.clear),
+        onPressed: () {
+          if (query.isEmpty) {
+            close(context, MachineOwners());
+          } else {
+            query = '';
+          }
+        }
+    ),
+  ];
+  // TODO: implement buildActions
+
+  @override
+  Widget? buildLeading(BuildContext context)=>IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: ()=>close(context,MachineOwners()),
+  );
+  // TODO: implement buildLeading
+
+  @override
+  Widget buildResults(BuildContext context)=>Center(
+    child: Text(query,style: TextStyle(fontSize: 64,fontWeight:FontWeight.bold),),
+  );
+  // TODO: implement buildResults
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String>suggestions = searchResults.where((searchResult) {
+      final result = searchResult.toLowerCase();
+      final input = query.toLowerCase();
+
+      return result.contains(input);
+    }).toList();
+
+    return ListView.builder(
+        itemCount: suggestions.length,
+        itemBuilder: (context,index) {
+          final suggestion = suggestions[index];
+
+          return ListTile(
+            title: Text(suggestion),
+            onTap: () {
+              query = suggestion;
+              showResults(context);
+            },
+          );
+        }
+    );
+    // TODO: implement buildSuggestions
+  }
+}
+
+
+/*import 'package:flutter/material.dart';
 
 import '../ui/home.dart';
-import 'machine_owners_user_page.dart';
+import 'machine_details_page.dart';
 class User{
   final String username;
   final String email;
@@ -102,12 +314,6 @@ class _MachineOwnersPageState extends State<MachineOwnersPage> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          leading: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (
-                    context) => Home()));
-              },
-              child: Icon(Icons.home,size: 30,)),
           title: Text("Machines Owners",style: TextStyle(fontWeight: FontWeight.bold)
           ),
           centerTitle: true,
@@ -285,4 +491,4 @@ class MYSearchDelegate extends SearchDelegate{
     );
     // TODO: implement buildSuggestions
   }
-}
+}*/

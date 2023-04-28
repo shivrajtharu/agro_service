@@ -103,12 +103,6 @@ class _FertilizerOwnersPageState extends State<FertilizerOwnersPage> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          leading: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (
-                    context) => Home()));
-              },
-              child: Icon(Icons.home,size: 30,)),
           title: Text("Fertilizer Owners",style: TextStyle(fontWeight: FontWeight.bold)
           ),
           centerTitle: true,

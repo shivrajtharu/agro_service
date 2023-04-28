@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (
-                                  context) => Farmer()));
+                                  context) => FarmerPage()));
                             },
                             child: Column(
                               children: [
@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (
-                                  context) => MachineOwnersPage()));
+                                  context) => MachineOwners()));
                             },
                             child: Column(
                               children: [
@@ -149,7 +149,7 @@ class _HomeState extends State<Home> {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(builder: (
-                                  context) => PlotsOwnersPage()));
+                                  context) => PlotOwners()));
                             },
                             child: Column(
                               children: [
@@ -381,7 +381,7 @@ class WorkerSearchDelegate extends SearchDelegate{
         icon:Icon(Icons.clear),
         onPressed: () {
           if (query.isEmpty) {
-            close(context, Farmer());
+            close(context, FarmerPage());
           } else {
             query = '';
           }
@@ -393,7 +393,7 @@ class WorkerSearchDelegate extends SearchDelegate{
   @override
   Widget? buildLeading(BuildContext context)=>IconButton(
     icon: Icon(Icons.arrow_back),
-    onPressed: ()=>close(context,Farmer()),
+    onPressed: ()=>close(context,FarmerPage()),
   );
   // TODO: implement buildLeading
 

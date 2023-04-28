@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:household/farmers/farmers_user_page.dart';
+import 'package:household/farmers/farmer_details_page.dart';
+
+import 'friends_user_page.dart';
 
 
 class User{
@@ -133,7 +135,7 @@ class _FriendsPageState extends State<FriendsPage> {
                       color: Colors.grey.shade100,
                       child: InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FarmersUserPage(user: user)));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FriendsUserPage(user: user,)));
                         },
                         child: ListTile(
                             leading: CircleAvatar(
